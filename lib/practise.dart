@@ -1,47 +1,64 @@
 import 'dart:io';
 
-void main(){
-  /*print('welcome to dart!');
-  stdout.write('Enter your name ');
-  var name= stdin.readLineSync();
-  print("Welcome, $name!");
+void main() {
+ // VAR AND DYNAMIC
+  String name= 'jam';
 
-  var alex= new Human(); //creating a class object
-*/
-  //declaration of variable
-  int? a;
+  //dynamic var- when it's not initialized when creating
+  var section; // can store multiple datatypes
+  //or dynamic section;
+  section='d';
 
-  //assign
-  a = 5;
-  print(a);
-  a=7;
-  print(a);
+  section =7;
 
-  //inline declaration
-  String name ='Raman';
-  print(name);
-  int b=7;
-  print(b);
+  section= false;//override
 
-  //long number
-  BigInt c= BigInt.parse('4684692672048487372');
-  print(c);
+  //var- initialized while creating
+  var subject = 'maths'; // will store same datatype
+  //subject =7; throws error as it implicitly identifies the datatype
 
-  //decimal number
-  double percent= 99.65;
-  print(percent);
-  //or var or num
-  num percent2= 99.65;
-  print(percent2);
+  subject ='English';
 
-  //boolean- is user logged in?
-  bool isLogin=false;
-  isLogin=true;
+  //
+  //
+  //
+  //
+  //FUNCTIONS
+  var myC= myClass();
+  myC.printhello(); //function calling
+  myC.printhello();
 
+  print(myC.Add(4, 5));
+  print(myC.Add(1,5));
 
+  var myName= second();
+  myName.printName("my name is divya");
+  myName.printName("I am a data science student at BIT Durg");
 
 }
+class myClass{
 
-class Human{
-  Human();
+  myClass(){ //default constructor
+    print("myClass object created");
+  }
+void printhello() {  //declaration
+
+  print("hello"); //definition
+
+                 }
+
+int Add(int a,int b){
+  int sum;
+  sum= a+b;
+  return sum;
 }
+            }
+
+class second{
+  void printName(String name){
+    print(name);
+  }
+}
+
+
+
