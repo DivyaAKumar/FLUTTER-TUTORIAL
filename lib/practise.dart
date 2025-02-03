@@ -1,63 +1,63 @@
 import 'dart:io';
 
 void main() {
- // VAR AND DYNAMIC
-  String name= 'jam';
 
-  //dynamic var- when it's not initialized when creating
-  var section; // can store multiple datatypes
-  //or dynamic section;
-  section='d';
+ //LISTS IN DART
+  var listNames = [10,20,30,40];
+  //Operations
+  listNames.add(50);
+  print(listNames);
 
-  section =7;
+  //blank list
+  var names= [];
+  print(names);
 
-  section= false;//override
+  //adding elements to last
+  names.add('DIVV');
+  names.add('ayushi');
+  names.add('sana');
+  names.add('rish');
 
-  //var- initialized while creating
-  var subject = 'maths'; // will store same datatype
-  //subject =7; throws error as it implicitly identifies the datatype
+  //adding already made list elements to end of another list
+  names.addAll(listNames);
+  print(names);
 
-  subject ='English';
+  //adding an element at a particular index
+  names.insert(3, "piu");
+  print(names);
 
-  //
-  //
-  //
-  //
-  //FUNCTIONS
-  var myC= myClass();
-  myC.printhello(); //function calling
-  myC.printhello();
+  //adding already made list elements to a particular index of another list
+  names.insertAll(5, listNames);
+  print(names);
 
-  print(myC.Add(4, 5));
-  print(myC.Add(1,5));
+  //updating an element in a list
+  names[5]="shreya";
+  print(names);
 
-  var myName= second();
-  myName.printName("my name is divya");
-  myName.printName("I am a data science student at BIT Durg");
+  //replace multiple elements from a list
+  //start index, end+1
+  listNames.replaceRange(0, 4, [1,2,3,4]);
+  print(listNames);
 
-}
-class myClass{
+  //remove an element from a list
+  names.remove("shreya");
+  print(names);
+  names.removeLast();
+  print(names);
+  names.removeAt(0);
+  print(names);
+  names.removeRange(4, 12);
+  print(names);
 
-  myClass(){ //default constructor
-    print("myClass object created");
-  }
-void printhello() {  //declaration
+  //other operations
+  print("length: ${names.length}");
+  print("reversed: ${names.reversed}");
+  print("first: ${names.first}");
+  print("last: ${names.last}");
+  print("isnotempty: ${names.isNotEmpty}");
+  print("isempty: ${names.isEmpty}");
+  print("element at 2nd index: ${names.elementAt(2)}");
 
-  print("hello"); //definition
-
-                 }
-
-int Add(int a,int b){
-  int sum;
-  sum= a+b;
-  return sum;
-}
-            }
-
-class second{
-  void printName(String name){
-    print(name);
-  }
 }
 
 
