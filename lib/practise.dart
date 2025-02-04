@@ -2,57 +2,38 @@ import 'dart:io';
 
 void main() {
 
-  //FINAL AND CONSTANT
+  //CONDITIONAL PROGRAMMING
 
-  //final name = 'Raman';
-  // name = 'Ramanujan'; //throws error as final value remains unchanged - cant be reassigned
-  //print(name);
+  var a = 100;
+  var b= 30;
+  if(a>=100 || b>100){
+    print("hello");
+  } else if(a<=30){
+    print("amigo");
+  } else{
+    print("adios amigos");
+  }
 
-  final String name;
-  name= 'Raman';
+  //LOOPS IN DART
 
-  //name = "dhihd";
-  print(name);
+ //for loop
+  for(int i=0; i<10; i++){
+    print("$i increment");
+  }
 
-//final var and final dynamic can be overridden
+ //while loop
+  int j =0;
+  while(j <=10){
+    print("Increment $j");
+    j++;
+  }
 
-
-//CONSTANT- value should be assigned then and there only
-const new_name = "Raman";
-//name= "Ram"; // cant be reassigned
-print(new_name);
-
-/*var names;
-names = [
-  "Ram",
-  "Divv",
-  "ayushi"
-];
-
-names =  [1,2,3,4];*/
-
-final marks = [
-  1,
-  2,
-  3,
-  4
-];
-
-//marks =[2,3,4,5];
-print(marks);
-
-marks.add(3); // doesnt throw error as element can still be added
-print(marks);
-
-const const_marks = [
-    1,
-    2,
-    3,
-    4
-  ];
-
-//const_marksmarks.add(3); // throws error as now further element can be added after const
-print(const_marks);
+  //do while
+  int num= 5;
+  do{
+    print("this is $num");
+    num++;
+  } while(num<=20);
 }
 
 
