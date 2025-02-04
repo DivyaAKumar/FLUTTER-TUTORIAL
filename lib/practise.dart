@@ -2,56 +2,57 @@ import 'dart:io';
 
 void main() {
 
- //MAPS IN DART- to store multiple different data type in key value pair, and use key to retrieve the value 
-                //flexible and mutable, keys should be unique- keys are case-sensitive
-//method 1
-//example 1
-  var map_name = {
-    'key1' : "value 1",
-    'key2' : 2,
-    'key3' :3.0,
-    'key4' : true
-  };
-  
-print(map_name);
-print(map_name['key2']);
-print(map_name['key5']);
+  //FINAL AND CONSTANT
 
-map_name['key1'] = "RAMAN";
-print(map_name['key1']);
+  //final name = 'Raman';
+  // name = 'Ramanujan'; //throws error as final value remains unchanged - cant be reassigned
+  //print(name);
 
-map_name['KEY1'] = "RAM";
-print(map_name['KEY1']);
+  final String name;
+  name= 'Raman';
 
-//example 2
-  var emp_name = {
-    'Name' : "Value",
-    'Experience' : 2,
-    'Rating' :3.0,
-    'Bachelor' : true
-  };
+  //name = "dhihd";
+  print(name);
 
-  print(emp_name);
+//final var and final dynamic can be overridden
 
-  //method 2
-  var mapName = Map();
-  mapName['Name'] = "Raman";
-  mapName['Exp'] = 2;
-  mapName['rating'] = 5;
-  mapName['Bachelor?'] = false;
-  print(mapName);
 
-  //operations
-  print(mapName.isNotEmpty);
-  print(mapName.isEmpty);
-  print(mapName.keys);
-  print(mapName.length);
-  print(mapName.values);
-  print(mapName.containsKey("Name"));
-  print(mapName.containsValue("Ram"));
-  print(mapName.remove('Bachelor?'));
-  print(mapName);
+//CONSTANT- value should be assigned then and there only
+const new_name = "Raman";
+//name= "Ram"; // cant be reassigned
+print(new_name);
 
+/*var names;
+names = [
+  "Ram",
+  "Divv",
+  "ayushi"
+];
+
+names =  [1,2,3,4];*/
+
+final marks = [
+  1,
+  2,
+  3,
+  4
+];
+
+//marks =[2,3,4,5];
+print(marks);
+
+marks.add(3); // doesnt throw error as element can still be added
+print(marks);
+
+const const_marks = [
+    1,
+    2,
+    3,
+    4
+  ];
+
+//const_marksmarks.add(3); // throws error as now further element can be added after const
+print(const_marks);
 }
 
 
