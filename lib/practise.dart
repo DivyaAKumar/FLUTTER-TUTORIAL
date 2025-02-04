@@ -2,61 +2,55 @@ import 'dart:io';
 
 void main() {
 
- //LISTS IN DART
-  var listNames = [10,20,30,40];
-  //Operations
-  listNames.add(50);
-  print(listNames);
+ //MAPS IN DART- to store multiple different data type in key value pair, and use key to retrieve the value 
+                //flexible and mutable, keys should be unique- keys are case-sensitive
+//method 1
+//example 1
+  var map_name = {
+    'key1' : "value 1",
+    'key2' : 2,
+    'key3' :3.0,
+    'key4' : true
+  };
+  
+print(map_name);
+print(map_name['key2']);
+print(map_name['key5']);
 
-  //blank list
-  var names= [];
-  print(names);
+map_name['key1'] = "RAMAN";
+print(map_name['key1']);
 
-  //adding elements to last
-  names.add('DIVV');
-  names.add('ayushi');
-  names.add('sana');
-  names.add('rish');
+map_name['KEY1'] = "RAM";
+print(map_name['KEY1']);
 
-  //adding already made list elements to end of another list
-  names.addAll(listNames);
-  print(names);
+//example 2
+  var emp_name = {
+    'Name' : "Value",
+    'Experience' : 2,
+    'Rating' :3.0,
+    'Bachelor' : true
+  };
 
-  //adding an element at a particular index
-  names.insert(3, "piu");
-  print(names);
+  print(emp_name);
 
-  //adding already made list elements to a particular index of another list
-  names.insertAll(5, listNames);
-  print(names);
+  //method 2
+  var mapName = Map();
+  mapName['Name'] = "Raman";
+  mapName['Exp'] = 2;
+  mapName['rating'] = 5;
+  mapName['Bachelor?'] = false;
+  print(mapName);
 
-  //updating an element in a list
-  names[5]="shreya";
-  print(names);
-
-  //replace multiple elements from a list
-  //start index, end+1
-  listNames.replaceRange(0, 4, [1,2,3,4]);
-  print(listNames);
-
-  //remove an element from a list
-  names.remove("shreya");
-  print(names);
-  names.removeLast();
-  print(names);
-  names.removeAt(0);
-  print(names);
-  names.removeRange(4, 12);
-  print(names);
-
-  //other operations
-  print("length: ${names.length}");
-  print("reversed: ${names.reversed}");
-  print("first: ${names.first}");
-  print("last: ${names.last}");
-  print("isnotempty: ${names.isNotEmpty}");
-  print("isempty: ${names.isEmpty}");
-  print("element at 2nd index: ${names.elementAt(2)}");
+  //operations
+  print(mapName.isNotEmpty);
+  print(mapName.isEmpty);
+  print(mapName.keys);
+  print(mapName.length);
+  print(mapName.values);
+  print(mapName.containsKey("Name"));
+  print(mapName.containsValue("Ram"));
+  print(mapName.remove('Bachelor?'));
+  print(mapName);
 
 }
 
