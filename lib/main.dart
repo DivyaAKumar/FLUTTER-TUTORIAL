@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -6,7 +7,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  // This widget is the root of our application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,16 +32,27 @@ class _ContainerPageState extends State<ContainerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center( // Changed from { to (
-        child: Container( // Added 'child:' to specify the child of the Container
-          height: 500,
-          width: 500,
-          color: Colors.blue,
-          child: const Center( // Added const for the Text widget
-            child: Text("This is a container"),
-          ), //end of Text
-        ), //end of Container
-      ), //end of Center
+      appBar: AppBar(
+        title: Text('Hello'),
+      ),
+      body: Center(
+        child: Container(
+          width: 200,
+          height: 100,
+          color: Colors.blueGrey,
+          child: Center(
+            child: Text(
+              'This is center of container',
+              style: TextStyle(
+                color: Colors.amberAccent,
+                fontSize: 15,
+                fontWeight: FontWeight.w400,
+                backgroundColor: Colors.deepPurple
+                ),
+            ),
+          ),
+        ),
+      ),
     ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
