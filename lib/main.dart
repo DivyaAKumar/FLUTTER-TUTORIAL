@@ -33,34 +33,18 @@ class _ContainerPageState extends State<ContainerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Buttons In Flutter'),
+        title: Text('Images In Flutter'),
         backgroundColor: Colors.purple,
       ),
-      body: Center( 
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, 
-          children: [
-            TextButton(
-              child: const Text("I'm TextButton."),
-              onPressed: () {
-                print("Text Button Pressed");
-              },
-            ), // End of TextButton
-            ElevatedButton(
-              child: const Text("I'm Elevated Button."),
-              onPressed: () {
-                print("Elevated Button Pressed");
-              },
-            ), // End of ElevatedButton
-            OutlinedButton(
-              child: const Text("I'm Outlined Button."),
-              onPressed: () {
-                print("Outlined Button Pressed");
-              },
-            ), // End of OutlinedButton
-          ], // End of children list
-        ), // End of Column
-      ), // End of Center
+      body: Center(
+        child: Container(
+          width: 400,
+          height: 400,
+          child: Image.asset("assets/images/bird.png"),
+        ) 
+    
+      )
     ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
+
