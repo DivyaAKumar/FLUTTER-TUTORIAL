@@ -38,83 +38,24 @@ class _ContainerPageState extends State<ContainerPage> {
         title: Text('Rows and Columns In Flutter'),
         backgroundColor: Colors.purple,
       ),
-      body: Container(
-        height: 500,
-        decoration: BoxDecoration(
-    border: Border.all(
-      color: Colors.black, // Border color
-      width: 3.0,         // Border width
-    ),
-  ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                //or <Text> for using only Text
-                Text(
-                  "1",
-                  style: TextStyle(color: Colors.amberAccent, fontSize: 30),
-                ),
-                Text(
-                  "2",
-                  style: TextStyle(color: Colors.black, fontSize: 30),
-                ),
-                Text(
-                  "3",
-                  style: TextStyle(color: Colors.pink, fontSize: 30),
-                ),
-                Text(
-                  "4",
-                  style: TextStyle(color: Colors.red, fontSize: 30),
-                ),
-                Text(
-                  "5",
-                  style: TextStyle(color: Colors.blue, fontSize: 30),
-                ),
-                OutlinedButton(
-                    onPressed: () {
-                      print("Clicked");
-                    },
-                    child: Text("Click"))
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                //or <Text> for using only Text
-                Text(
-                  "1",
-                  style: TextStyle(color: Colors.amberAccent, fontSize: 30),
-                ),
-                Text(
-                  "2",
-                  style: TextStyle(color: Colors.black, fontSize: 30),
-                ),
-                Text(
-                  "3",
-                  style: TextStyle(color: Colors.pink, fontSize: 30),
-                ),
-                Text(
-                  "4",
-                  style: TextStyle(color: Colors.red, fontSize: 30),
-                ),
-                Text(
-                  "5",
-                  style: TextStyle(color: Colors.blue, fontSize: 30),
-                ),
-                OutlinedButton(
-                    onPressed: () {
-                      print("Clicked");
-                    },
-                    child: Text("Click"))
-              ],
-            ),
-          ],
+      body: Center(
+        child: InkWell(
+          onTap: (){
+            print("single tapped");
+
+          },
+          onDoubleTap: (){
+                  print("double tapped");
+          },
+          onLongPress: (){
+                print("long pressed tapped");
+          },
+          child: Container(
+            width: 300,
+            height: 300,
+            color: Colors.purple,
+            child: Center(child: Text("Click here", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400))),
+          ),
         ),
       ),
     ); //end of Scaffold
