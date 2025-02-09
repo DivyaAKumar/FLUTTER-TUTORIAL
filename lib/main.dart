@@ -35,40 +35,98 @@ class _ContainerPageState extends State<ContainerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Rows and Columns In Flutter'),
+        title: Text('Single child scroll view In Flutter'),
         backgroundColor: Colors.purple,
       ),
-      body: Center(
-        child: InkWell(
-          onTap: (){
-            print("single tapped");
-
-          },
-          onDoubleTap: (){
-                  print("double tapped");
-          },
-          onLongPress: (){
-                print("long pressed tapped");
-          },
-          child: Container(
-            width: 300,
-            height: 300,
-            color: Colors.purple,
-            child: Center(child: Text("Click here", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400))),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 200,
+                          width: 100,
+                          color: Colors.orange,
+                          child: Center(child: Text("data1" , style: TextStyle(fontSize: 25),)),
+                        ),
+                        Container(
+                          height: 200,
+                           width: 100,
+                          color: Colors.lightBlue,
+                          child: Center(child: Text("data1" , style: TextStyle(fontSize: 25),)),
+                        ),
+                        Container(
+                          height: 200,
+                           width: 100,
+                          color: Colors.yellow,
+                          child: Center(child: Text("data1" , style: TextStyle(fontSize: 25),)),
+                        ),
+                        Container(
+                          height: 200,
+                           width: 100,
+                          color: Colors.green,
+                          child: Center(child: Text("data1" , style: TextStyle(fontSize: 25),)),
+                        ),
+                        Container(
+                          height: 200,
+                           width: 100,
+                          color: Colors.pink,
+                          child: Center(child: Text("data1" , style: TextStyle(fontSize: 25),)),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+//container 1
+              const SizedBox(height: 20),
+              Container(
+                height: 200,
+                color: Colors.lightBlue,
+                child: Center(child: Text("data2" , style: TextStyle(fontSize: 25),)),
+              ) ,//container 2
+               const SizedBox(height: 20),
+              Container(
+                height: 200,
+                color: Colors.green,
+                child: Center(child: Text("data3" , style: TextStyle(fontSize: 25),)),
+              ) ,//container 3
+               const SizedBox(height: 20),
+              Container(
+                height: 200,
+                color: Colors.pink,
+                child: Center(child: Text("data4" , style: TextStyle(fontSize: 25),)),
+              ) ,//container 4
+               const SizedBox(height: 20),
+              Container(
+                height: 200,
+                color: Colors.orange,
+                child: Center(child: Text("data5" , style: TextStyle(fontSize: 25),)),
+              ) ,//container 5
+               const SizedBox(height: 20),
+              Container(
+                height: 200,
+                color: Colors.purple,
+                child: Center(child: Text("data6" , style: TextStyle(fontSize: 25),)),
+              ) ,//container 6
+               const SizedBox(height: 20),
+              Container(
+                height: 200,
+                color: Colors.red,
+                child: Center(child: Text("data7" , style: TextStyle(fontSize: 25),)),
+              ) ,//container 7
+          
+            ],
+          
           ),
         ),
-      ),
+      )
     ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
-
-
-// NOTES-
-// row-
-// MainAxisAlignment.end--- aligns to end of size alloted
-// CrossAxisAlignment.end- places widget in the end of container columnwise
-// column- 
-// MainAxisAlignment.end--- aligns to end of size alloted
-// CrossAxisAlignment.end- places widget in the end of container columnwise
-// space around- pads half the space ie b/w widgets
-// spaceevenly- evenly pads same space what was b/w widgets
