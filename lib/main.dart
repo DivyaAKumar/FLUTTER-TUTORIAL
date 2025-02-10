@@ -33,100 +33,97 @@ class ContainerPage extends StatefulWidget {
 class _ContainerPageState extends State<ContainerPage> {
   @override
   Widget build(BuildContext context) {
+    var arrCount = ["one",'Two',"three",'four','five'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Single child scroll view In Flutter'),
+        title: Text('ListView (normal, ListView.builder, Listview.separated)In Flutter'),
+        //it is used to recycle memory
         backgroundColor: Colors.purple,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          height: 200,
-                          width: 100,
-                          color: Colors.orange,
-                          child: Center(child: Text("data1" , style: TextStyle(fontSize: 25),)),
-                        ),
-                        Container(
-                          height: 200,
-                           width: 100,
-                          color: Colors.lightBlue,
-                          child: Center(child: Text("data1" , style: TextStyle(fontSize: 25),)),
-                        ),
-                        Container(
-                          height: 200,
-                           width: 100,
-                          color: Colors.yellow,
-                          child: Center(child: Text("data1" , style: TextStyle(fontSize: 25),)),
-                        ),
-                        Container(
-                          height: 200,
-                           width: 100,
-                          color: Colors.green,
-                          child: Center(child: Text("data1" , style: TextStyle(fontSize: 25),)),
-                        ),
-                        Container(
-                          height: 200,
-                           width: 100,
-                          color: Colors.pink,
-                          child: Center(child: Text("data1" , style: TextStyle(fontSize: 25),)),
-                        ),
-                      ],
-                    ),
-                  ),
+       body:  Center(
+         child: Padding(
+           padding: const EdgeInsets.all(8.0),
+           child: ListView.separated(itemBuilder: (context, index) {
+             return Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(arrCount[index], style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300) ,),
                 ),
-//container 1
-              const SizedBox(height: 20),
-              Container(
-                height: 200,
-                color: Colors.lightBlue,
-                child: Center(child: Text("data2" , style: TextStyle(fontSize: 25),)),
-              ) ,//container 2
-               const SizedBox(height: 20),
-              Container(
-                height: 200,
-                color: Colors.green,
-                child: Center(child: Text("data3" , style: TextStyle(fontSize: 25),)),
-              ) ,//container 3
-               const SizedBox(height: 20),
-              Container(
-                height: 200,
-                color: Colors.pink,
-                child: Center(child: Text("data4" , style: TextStyle(fontSize: 25),)),
-              ) ,//container 4
-               const SizedBox(height: 20),
-              Container(
-                height: 200,
-                color: Colors.orange,
-                child: Center(child: Text("data5" , style: TextStyle(fontSize: 25),)),
-              ) ,//container 5
-               const SizedBox(height: 20),
-              Container(
-                height: 200,
-                color: Colors.purple,
-                child: Center(child: Text("data6" , style: TextStyle(fontSize: 25),)),
-              ) ,//container 6
-               const SizedBox(height: 20),
-              Container(
-                height: 200,
-                color: Colors.red,
-                child: Center(child: Text("data7" , style: TextStyle(fontSize: 25),)),
-              ) ,//container 7
-          
-            ],
-          
-          ),
-        ),
-      )
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(arrCount[index], style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300) ,),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(arrCount[index], style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300) ,),
+                )
+              ],
+             );
+           }, separatorBuilder: (context,index){
+            return Divider(height: 50, thickness: 3,);
+           
+           }, itemCount: arrCount.length),
+         ),
+       )
+      // Center(
+      //    child: Padding(
+      //      padding: const EdgeInsets.all(8.0),
+      //      child: ListView.separated(itemBuilder: (context, index) {
+      //        return Text(arrCount[index], style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300) ,);
+      //      }, separatorBuilder: (context,index){
+      //       return Divider(height: 50, thickness: 3,);
+           
+      //      }, itemCount: arrCount.length),
+      //    ),
+      //  )
+       
+       
+       
+       
+       
+       //For dynamically passing data of list
+      //  ListView.builder(itemBuilder: (context, index) {
+      //    return Text(arrCount[index], style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300) ,);
+      //  },
+      //  itemCount: arrCount.length,
+      //  itemExtent: 80,
+      //  scrollDirection: Axis.horizontal,
+      //  )
+
+
+
+
+
+
+      // Center(
+      //   child: ListView(
+      //     scrollDirection: Axis.horizontal,
+      //     reverse: true,
+      //     children: [
+      //       Padding(
+      //         padding: const EdgeInsets.all(8.0),
+      //         child: Text("One", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),),
+      //       ),
+      //        Padding(
+      //          padding: const EdgeInsets.all(8.0),
+      //          child: Text("Two", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),),
+      //        ),
+      //         Padding(
+      //           padding: const EdgeInsets.all(8.0),
+      //           child: Text("Three", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),),
+      //         ),
+      //          Padding(
+      //            padding: const EdgeInsets.all(8.0),
+      //            child: Text("Four", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),),
+      //          ),
+      //           Padding(
+      //             padding: const EdgeInsets.all(8.0),
+      //             child: Text("Five", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),),
+      //           )
+      //     ],
+      //   ),
+      // )
     ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
