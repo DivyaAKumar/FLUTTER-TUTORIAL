@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -36,41 +37,52 @@ class _ContainerPageState extends State<ContainerPage> {
     var arrCount = ["One",'Two',"Three",'Four','Five'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Container Decoration in Flutter'),
+        title: Text('Expanded Widget in Flutter'),
         //it is used to recycle memory
         backgroundColor: Colors.purple,
       ),
-       body:  Container(
-        width: double.infinity, //width full
-        height: double.infinity, //height full
-        color: Colors.blue,
-        child: Center(
-          child: Container( 
-            decoration: BoxDecoration(
-               color: Colors.amber,
-              // borderRadius: BorderRadius.circular(11)
-               //borderRadius: BorderRadius.only(topLeft: Radius.elliptical(30, 50))
-               border: Border.all(
-                width: 2,
-                color: Colors.black
-               ),
-               boxShadow: [
-                BoxShadow(
-                  blurRadius: 20,
-                  spreadRadius: 20,
-                  color: Colors.grey
+       body: //expands its child widget wherever it finds space 
+            Row(
+             // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    color: Colors.blue,
+                  ),
                 ),
-               ],
-               shape: BoxShape.circle
-            ),
-             width: 150,
-             height: 150,
-         
-          ),
-        ),
-       
-       )
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    color: Colors.orange,
+                  ),
+                ),
+                Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.green,
+                ),
+                Expanded(
+                  flex: 5,
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    color: Colors.pink,
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    color: Colors.yellow,
+                  ),
+                ),
 
+              ],
+            )
     ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
