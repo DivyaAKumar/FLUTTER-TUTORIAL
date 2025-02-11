@@ -33,97 +33,44 @@ class ContainerPage extends StatefulWidget {
 class _ContainerPageState extends State<ContainerPage> {
   @override
   Widget build(BuildContext context) {
-    var arrCount = ["one",'Two',"three",'four','five'];
+    var arrCount = ["One",'Two',"Three",'Four','Five'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('ListView (normal, ListView.builder, Listview.separated)In Flutter'),
+        title: Text('Container Decoration in Flutter'),
         //it is used to recycle memory
         backgroundColor: Colors.purple,
       ),
-       body:  Center(
-         child: Padding(
-           padding: const EdgeInsets.all(8.0),
-           child: ListView.separated(itemBuilder: (context, index) {
-             return Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(arrCount[index], style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300) ,),
+       body:  Container(
+        width: double.infinity, //width full
+        height: double.infinity, //height full
+        color: Colors.blue,
+        child: Center(
+          child: Container( 
+            decoration: BoxDecoration(
+               color: Colors.amber,
+              // borderRadius: BorderRadius.circular(11)
+               //borderRadius: BorderRadius.only(topLeft: Radius.elliptical(30, 50))
+               border: Border.all(
+                width: 2,
+                color: Colors.black
+               ),
+               boxShadow: [
+                BoxShadow(
+                  blurRadius: 20,
+                  spreadRadius: 20,
+                  color: Colors.grey
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(arrCount[index], style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300) ,),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(arrCount[index], style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300) ,),
-                )
-              ],
-             );
-           }, separatorBuilder: (context,index){
-            return Divider(height: 50, thickness: 3,);
-           
-           }, itemCount: arrCount.length),
-         ),
+               ],
+               shape: BoxShape.circle
+            ),
+             width: 150,
+             height: 150,
+         
+          ),
+        ),
+       
        )
-      // Center(
-      //    child: Padding(
-      //      padding: const EdgeInsets.all(8.0),
-      //      child: ListView.separated(itemBuilder: (context, index) {
-      //        return Text(arrCount[index], style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300) ,);
-      //      }, separatorBuilder: (context,index){
-      //       return Divider(height: 50, thickness: 3,);
-           
-      //      }, itemCount: arrCount.length),
-      //    ),
-      //  )
-       
-       
-       
-       
-       
-       //For dynamically passing data of list
-      //  ListView.builder(itemBuilder: (context, index) {
-      //    return Text(arrCount[index], style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300) ,);
-      //  },
-      //  itemCount: arrCount.length,
-      //  itemExtent: 80,
-      //  scrollDirection: Axis.horizontal,
-      //  )
 
-
-
-
-
-
-      // Center(
-      //   child: ListView(
-      //     scrollDirection: Axis.horizontal,
-      //     reverse: true,
-      //     children: [
-      //       Padding(
-      //         padding: const EdgeInsets.all(8.0),
-      //         child: Text("One", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),),
-      //       ),
-      //        Padding(
-      //          padding: const EdgeInsets.all(8.0),
-      //          child: Text("Two", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),),
-      //        ),
-      //         Padding(
-      //           padding: const EdgeInsets.all(8.0),
-      //           child: Text("Three", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),),
-      //         ),
-      //          Padding(
-      //            padding: const EdgeInsets.all(8.0),
-      //            child: Text("Four", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),),
-      //          ),
-      //           Padding(
-      //             padding: const EdgeInsets.all(8.0),
-      //             child: Text("Five", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),),
-      //           )
-      //     ],
-      //   ),
-      // )
     ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
