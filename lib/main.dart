@@ -34,24 +34,27 @@ class ContainerPage extends StatefulWidget {
 class _ContainerPageState extends State<ContainerPage> {
   @override
   Widget build(BuildContext context) {
+    var arr_names = ["Divya A Kumar", "Ayushi Dubey","Biji A Kumar","V Anil Kumar","Harshit Kumar"];
+    var img_path =["assets/images/profile1.jpg","assets/images/bird.png","assets/images/BIJIKUMAR.jpg","assets/images/ANILKUMAR.jpg","assets/images/happybird.png"];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Padding and margin in Flutter'),
+        title: Text('ListTile in Flutter'),
         //it is used to recycle memory
         backgroundColor: Colors.purple,
       ),
        body: 
-         Container(
-            margin: EdgeInsets.all(50),
-            decoration: BoxDecoration(
-              color: Colors.amber,
-              border: Border.all(color: Colors.black)
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Hello",style: TextStyle(fontSize: 30),),
-            )),
+       //NOTE- ListTile can be divided into 3 parts- leading, title & subtitle, Trailing 
 
+        ListView.separated(itemBuilder: (context, index) {
+          return ListTile(
+            leading: Image.asset(img_path[index], width: 50,height: 50,),
+            subtitle: Text(arr_names[index]),
+            title:Text('${index +1}', style: TextStyle(fontSize: 25),) ,
+            trailing: Icon(Icons.zoom_out_map_rounded),
+          );
+        }, separatorBuilder: (context, index) {
+          return Divider(height: 50,thickness: 1,);
+        }, itemCount: arr_names.length)
        
         
     ); //end of Scaffold
