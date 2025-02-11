@@ -34,55 +34,26 @@ class ContainerPage extends StatefulWidget {
 class _ContainerPageState extends State<ContainerPage> {
   @override
   Widget build(BuildContext context) {
-    var arrCount = ["One",'Two',"Three",'Four','Five'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Expanded Widget in Flutter'),
+        title: Text('Padding and margin in Flutter'),
         //it is used to recycle memory
         backgroundColor: Colors.purple,
       ),
-       body: //expands its child widget wherever it finds space 
-            Row(
-             // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    color: Colors.blue,
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    color: Colors.orange,
-                  ),
-                ),
-                Container(
-                  width: 50,
-                  height: 50,
-                  color: Colors.green,
-                ),
-                Expanded(
-                  flex: 5,
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    color: Colors.pink,
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    color: Colors.yellow,
-                  ),
-                ),
+       body: 
+         Container(
+            margin: EdgeInsets.all(50),
+            decoration: BoxDecoration(
+              color: Colors.amber,
+              border: Border.all(color: Colors.black)
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Hello",style: TextStyle(fontSize: 30),),
+            )),
 
-              ],
-            )
+       
+        
     ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
