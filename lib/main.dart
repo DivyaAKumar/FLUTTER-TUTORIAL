@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -34,29 +33,49 @@ class ContainerPage extends StatefulWidget {
 class _ContainerPageState extends State<ContainerPage> {
   @override
   Widget build(BuildContext context) {
-    var arr_names = ["Divya A Kumar", "Ayushi Dubey","Biji A Kumar","V Anil Kumar","Harshit Kumar"];
-    var img_path =["assets/images/profile1.jpg","assets/images/bird.png","assets/images/BIJIKUMAR.jpg","assets/images/ANILKUMAR.jpg","assets/images/happybird.png"];
+    // var arr_names = [
+    //   "Divya A Kumar",
+    //   "Ayushi Dubey",
+    //   "Biji A Kumar",
+    //   "V Anil Kumar",
+    //   "Harshit Kumar"
+    // ];
+    // var img_path = [
+    //   "assets/images/profile1.jpg",
+    //   "assets/images/bird.png",
+    //   "assets/images/BIJIKUMAR.jpg",
+    //   "assets/images/ANILKUMAR.jpg",
+    //   "assets/images/happybird.png"
+    // ];
     return Scaffold(
       appBar: AppBar(
-        title: Text('ListTile in Flutter'),
+        title: Text('CircleAvatar in Flutter'),
         //it is used to recycle memory
         backgroundColor: Colors.purple,
       ),
-       body: 
-       //NOTE- ListTile can be divided into 3 parts- leading, title & subtitle, Trailing 
+      body: Center(
+        child: CircleAvatar(
+          // child: Container(
+          //   width: 50,
+          //   height: 50,
+          //   child: Column(
+          //     children: [
+          //       Container(
+          //           width: 30,
+          //           height: 30,
+          //           child: Image.asset('assets/images/ANILKUMAR.jpg')),
+          //       Text("anil")
+          //     ],
+          //   ),
+          // ),
 
-        ListView.separated(itemBuilder: (context, index) {
-          return ListTile(
-            leading: Image.asset(img_path[index], width: 50,height: 50,),
-            subtitle: Text(arr_names[index]),
-            title:Text('${index +1}', style: TextStyle(fontSize: 25),) ,
-            trailing: Icon(Icons.zoom_out_map_rounded),
-          );
-        }, separatorBuilder: (context, index) {
-          return Divider(height: 50,thickness: 1,);
-        }, itemCount: arr_names.length)
-       
-        
+          backgroundImage: AssetImage('assets/images/ANILKUMAR.jpg'),
+          backgroundColor: Colors.purple,
+          //radius: 50,
+          maxRadius: 50,
+          //minRadius: 30,
+        ),
+      ),
     ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
