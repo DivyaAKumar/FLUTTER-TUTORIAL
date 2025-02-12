@@ -33,49 +33,16 @@ class ContainerPage extends StatefulWidget {
 class _ContainerPageState extends State<ContainerPage> {
   @override
   Widget build(BuildContext context) {
-    // var arr_names = [
-    //   "Divya A Kumar",
-    //   "Ayushi Dubey",
-    //   "Biji A Kumar",
-    //   "V Anil Kumar",
-    //   "Harshit Kumar"
-    // ];
-    // var img_path = [
-    //   "assets/images/profile1.jpg",
-    //   "assets/images/bird.png",
-    //   "assets/images/BIJIKUMAR.jpg",
-    //   "assets/images/ANILKUMAR.jpg",
-    //   "assets/images/happybird.png"
-    // ];
     return Scaffold(
       appBar: AppBar(
-        title: Text('CircleAvatar in Flutter'),
+        title: Text('Custom Fonts in Flutter'),
         //it is used to recycle memory
         backgroundColor: Colors.purple,
       ),
-      body: Center(
-        child: CircleAvatar(
-          // child: Container(
-          //   width: 50,
-          //   height: 50,
-          //   child: Column(
-          //     children: [
-          //       Container(
-          //           width: 30,
-          //           height: 30,
-          //           child: Image.asset('assets/images/ANILKUMAR.jpg')),
-          //       Text("anil")
-          //     ],
-          //   ),
-          // ),
-
-          backgroundImage: AssetImage('assets/images/ANILKUMAR.jpg'),
-          backgroundColor: Colors.purple,
-          //radius: 50,
-          maxRadius: 50,
-          //minRadius: 30,
-        ),
-      ),
+      body: //go to pubspec.yaml file and make changes in the font section below assets
+      //give the desired path of the file where the downloaded font is saved 
+      
+       Center(child: Text("Hello world", style: TextStyle(fontFamily: 'Calligraphy' , fontSize: 40 , fontWeight: FontWeight.w500),)),
     ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
