@@ -41,23 +41,44 @@ class ContainerPage extends StatefulWidget {
 class _ContainerPageState extends State<ContainerPage> {
   @override
   Widget build(BuildContext context) {
+    var arr_name = ["Ram", 'Sita', 'Laxman', 'Dinesh'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('Styles and Themes in Flutter'),
+        title: Text('Card Widget in Flutter'),
         //it is used to recycle memory
         backgroundColor: Colors.purple,
       ),
-      body: Column(
-        children: [ //copy with is used to add some extra attributes and ! is placed before .copywith
-                    //to confirm that the headlineLarge is created and is not null
-          Text("Hello World", style: Theme.of(context).textTheme.headlineLarge!.copyWith(color: Colors.red)),
-          Text("Hello World", style: Theme.of(context).textTheme.titleMedium,),          
-          Text("Hello World", style: Theme.of(context).textTheme.headlineMedium),
-          Text("Hello World", style: Theme.of(context).textTheme.titleSmall),
-          Text("Hello World", style: myTextStyle40(),), //from util.dart
-          Text("Hello World", style: myTextStyle30(),), //from util.dart
-       ],
-      )
+      body: //card widget is used to elevate your widget(to give it a 3d effect)
+        // Card(
+        //   elevation: 6, //5-7 or 3
+        //   shadowColor: Colors.red,
+          
+        //   child: Padding(
+        //     padding: const EdgeInsets.all(8.0),
+        //     child: Text("This is a Card Widget!", style: TextStyle(fontSize: 25),),
+        //   ),
+        //   )
+        ListView.builder(itemBuilder: (context, index) {
+          return  Card(
+            elevation: 6, //5-7 or 3
+          shadowColor: Colors.red,
+          
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              leading: Text("[$index]+1"),
+              title: Text(arr_name[index], style: TextStyle(fontSize: 25),),
+              subtitle: Text('Phone no.'),
+              trailing: Icon(Icons.accessibility),
+            )
+            
+            
+            
+           // Text(arr_name[index], style: TextStyle(fontSize: 25),),
+          ),
+          );
+        }, itemCount: arr_name.length,
+        )
     ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
