@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter_app/ui_helper/util.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,7 +46,7 @@ class _ContainerPageState extends State<ContainerPage> {
     var time = DateTime.now();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fetching date and time in Flutter'),
+        title: Text('Formatting Date in Flutter'),
         //it is used to recycle memory
         backgroundColor: Colors.purple,
       ),
@@ -58,13 +59,11 @@ class _ContainerPageState extends State<ContainerPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [    
-                Center(child: Text("Current Time in h:m:s: ${time.hour}:${time.minute}:${time.second} ", style: TextStyle(fontSize: 25),)),
-                Center(child: Text("Current day: ${time.weekday}", style: TextStyle(fontSize: 25),)),
-                Center(child: Text("Current month: ${time.month}", style: TextStyle(fontSize: 25),)),
-                Center(child: Text("Current year: ${time.year}", style: TextStyle(fontSize: 25),)),
-                Center(child: Text("Current minute: ${time.minute}", style: TextStyle(fontSize: 25),)),
-                Center(child: Text("Current Time:\n ${time}", style: TextStyle(fontSize: 25),)),
-                ElevatedButton(onPressed: (){
+                
+                Center(child: Text("Current Time in hms:\n ${DateFormat('Hms').format(time)}", style: TextStyle(fontSize: 25),)),
+                 Center(child: Text("Current Time in yMMMd:\n ${DateFormat('yMMMd').format(time)}", style: TextStyle(fontSize: 25),)),
+                 Center(child: Text("Current Time in MMMMEEEEd:\n ${DateFormat('MMMMEEEEd').format(time)}", style: TextStyle(fontSize: 25),)),
+                 ElevatedButton(onPressed: (){
                   setState(() { //calls build and fetches current time 
                     
                   });
