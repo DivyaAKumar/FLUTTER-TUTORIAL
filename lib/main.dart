@@ -37,104 +37,24 @@ class ContainerPage extends StatefulWidget {
 }
 
 class _ContainerPageState extends State<ContainerPage> {
-  var emailText= TextEditingController();
-  var passwordText = TextEditingController();
+  callBack(){
+    print("Clicked");
+  }
   @override
   Widget build(BuildContext context) {
     //var arr_name = ["Ram", 'Sita', 'Laxman', 'Dinesh'];
     var time = DateTime.now();
     return Scaffold(
         appBar: AppBar(
-          title: Text('TextField in Flutter(Text Input Widget)'),
+          title: Text('Callback functions in Flutter'),
          // backgroundColor: Colors.purple,
         ),
         body: Center(
           child: Container(
-            width: 300,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  controller: emailText,
-                  //enabled: false,
-                  decoration: InputDecoration(
-                    hintText: "Enter Your Email",
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(11),
-                      borderSide: BorderSide(
-                        color: Colors.orange,
-                        width: 3
-                      )
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(11),
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2,
-                      )
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(11),
-                      borderSide: BorderSide(
-                        color: Colors.grey,
-                        width: 2,
-                      )
-                    ),
-                    //suffixText: "Hint: Your dog's name.",
-                    suffixIcon: IconButton(onPressed: () { }, 
-                    icon: Icon(Icons.admin_panel_settings_outlined, color: Colors.blue,)
-                    ),
-                    prefixIcon: Icon(Icons.email , color: Colors.blue,)
-                    // border: OutlineInputBorder(
-                    //   borderRadius: BorderRadius.circular(11),
-                    //   borderSide: BorderSide(
-                    //     color: Colors.black
-                    //   )
-                    // )
-
-                  )
-                ),
-                Container(
-                  height: 11,
-                ),
-                 TextField(
-                  keyboardType: TextInputType.number,
-                  controller: passwordText,
-                  obscureText: true, // to hide password
-                  obscuringCharacter: "*", //character to use for hiding the password
-                  decoration: InputDecoration(
-                    hintText: "Enter Your Password",
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(11),
-                      borderSide: BorderSide(
-                        color: Colors.orange,
-                        width: 2,
-                      )
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(11),
-                      borderSide: BorderSide(
-                        color: Colors.blue,
-                        width: 2
-                      )
-                    ) ,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(11),
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                        width: 2,
-                      )
-                    )
-                  )
-                ),
-                ElevatedButton(onPressed: () {
-                  String userEmail = emailText.text.toString();
-                  String userPwd = passwordText.text.toString();
-                  print("Email: $userEmail and Password: $userPwd");
-                }, child: Text("Login"))
-              ],
-            ),
+            width: 200,
+            child: ElevatedButton(onPressed: (){
+               callBack();
+            }, child: Text("Click")),
           ),
         )
         ); //end of Scaffold
