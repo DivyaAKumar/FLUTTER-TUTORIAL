@@ -37,26 +37,48 @@ class ContainerPage extends StatefulWidget {
 }
 
 class _ContainerPageState extends State<ContainerPage> {
-  callBack(){
-    print("Clicked");
-  }
+
   @override
   Widget build(BuildContext context) {
     //var arr_name = ["Ram", 'Sita', 'Laxman', 'Dinesh'];
     var time = DateTime.now();
     return Scaffold(
         appBar: AppBar(
-          title: Text('Callback functions in Flutter'),
+          title: Text('Custom widget in Flutter'),
          // backgroundColor: Colors.purple,
         ),
-        body: Center(
-          child: Container(
-            width: 200,
-            child: ElevatedButton(onPressed: (){
-               callBack();
-            }, child: Text("Click")),
-          ),
+        body: Column(
+          children: [
+            ContItem(), //<-----custom widget
+
+            Expanded(
+              flex:2,
+              child: Container(
+                color: Colors.red
+                ,
+              ),
+            ),
+             Expanded(
+              flex: 2,
+               child: Container(
+                color: Colors.green,
+                           ),
+             ),
+             
+          ],
         )
         ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
+class ContItem extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return  Expanded(
+      flex: 2,
+      child: Container(
+                color: Colors.amber,
+              ),
+    );
+  }
+
+}
