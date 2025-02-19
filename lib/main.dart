@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter_app/ui_helper/util.dart';
 import 'package:intl/intl.dart';
+import 'package:my_first_flutter_app/widgets/rounded_btn.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,44 +45,16 @@ class _ContainerPageState extends State<ContainerPage> {
     var time = DateTime.now();
     return Scaffold(
         appBar: AppBar(
-          title: Text('Stacking widgets in Flutter'),
+          title: Text('Custom Button in Flutter'),
          // backgroundColor: Colors.purple,
         ),
-        body: Container(
-          width: 250,
-          height: 250,
-          child: Stack(
-            children: [
-              Container(
-                width: 200,
-                height: 200,
-                color: Colors.blueAccent,
-                child: Text("Container 1"),
-              ),
-          
-              Positioned(
-                left: 21,
-                top: 21,
-                child: Container(
-                  width: 150,
-                  height: 150,
-                  color: Colors.grey,
-                  child: Text("Container 2"),
-                
-                ),
-              ),
-          
-              Positioned(
-                right: 21,
-                bottom: 21,
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.blueGrey,
-                  child: Text("Container 3"),
-                ),
-              )
-            ],
+        body: Center(
+          child: Container(
+            width: 110,
+            child: RoundedButton(btnName:"Login", icon: Icon(Icons.lock, color: Colors.white,), bgColor: Colors.blue, textStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.white), callBack: (){
+              print("Logged in!");
+            }
+            ),
           ),
         )
         ); //end of Scaffold
