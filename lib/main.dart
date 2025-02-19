@@ -44,41 +44,48 @@ class _ContainerPageState extends State<ContainerPage> {
     var time = DateTime.now();
     return Scaffold(
         appBar: AppBar(
-          title: Text('Custom widget in Flutter'),
+          title: Text('Stacking widgets in Flutter'),
          // backgroundColor: Colors.purple,
         ),
-        body: Column(
-          children: [
-            ContItem(), //<-----custom widget
-
-            Expanded(
-              flex:2,
-              child: Container(
-                color: Colors.red
-                ,
+        body: Container(
+          width: 250,
+          height: 250,
+          child: Stack(
+            children: [
+              Container(
+                width: 200,
+                height: 200,
+                color: Colors.blueAccent,
+                child: Text("Container 1"),
               ),
-            ),
-             Expanded(
-              flex: 2,
-               child: Container(
-                color: Colors.green,
-                           ),
-             ),
-             
-          ],
+          
+              Positioned(
+                left: 21,
+                top: 21,
+                child: Container(
+                  width: 150,
+                  height: 150,
+                  color: Colors.grey,
+                  child: Text("Container 2"),
+                
+                ),
+              ),
+          
+              Positioned(
+                right: 21,
+                bottom: 21,
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.blueGrey,
+                  child: Text("Container 3"),
+                ),
+              )
+            ],
+          ),
         )
         ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
-class ContItem extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    return  Expanded(
-      flex: 2,
-      child: Container(
-                color: Colors.amber,
-              ),
-    );
-  }
 
-}
+
