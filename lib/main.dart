@@ -45,22 +45,10 @@ class _ContainerPageState extends State<ContainerPage> {
     var time = DateTime.now();
     return Scaffold(
         appBar: AppBar(
-          title: Text('Rich Text Widget in Flutter'),
+          title: Text('Icon Widget in Flutter'),
          // backgroundColor: Colors.purple,
         ),
-        body: Center(
-          child: RichText(text: TextSpan(
-            style: TextStyle(
-              fontSize: 27,
-              color: Colors.blueGrey
-            ),
-            children: <TextSpan>[
-              TextSpan(text: "It's "),
-              TextSpan(text: "all ",style: TextStyle(fontSize: 35, color: Colors.blueAccent, fontWeight: FontWeight.bold)),
-              TextSpan(text: "about widgets..." , style:TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold))
-            ]
-          )),
-        )
+        body: Center(child: Icon(Icons.lock, size: 100,color: Colors.red ))
           
                  
         ); //end of Scaffold
