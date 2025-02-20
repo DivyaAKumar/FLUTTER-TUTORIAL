@@ -46,22 +46,25 @@ class _ContainerPageState extends State<ContainerPage> {
     var time = DateTime.now();
     return Scaffold(
         appBar: AppBar(
-          title: Text('Awesome Icon in Flutter'),
+          title: Text('Positioned widget in Flutter'),
          // backgroundColor: Colors.purple,
         ),
-        body: Center(
-          child: Wrap(
-            children: [
-              Icon(Icons.lock, size: 80,),
-              SizedBox(width: 20,height: 20,),
-              FaIcon(FontAwesomeIcons.aws, size: 80,),
-              SizedBox(width: 20,height: 20,),
-              FaIcon(FontAwesomeIcons.calculator,  size: 80,),
-              SizedBox(width: 20,height: 20,),
-              FaIcon(FontAwesomeIcons.googleDrive, size: 80,),
-              SizedBox(width: 20,height: 20,),
-              FaIcon(FontAwesomeIcons.paypal, size: 80,)
-            ],
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          color: Colors.lightBlueAccent,
+          child: Stack(
+            children:[Positioned(
+              bottom: 70,
+              left: 150,
+              child: Container(
+                width: 100,
+                height: 100,
+                color: Colors.white,
+                child: Center(child: Text("positioned container")),
+              ),
+            ),
+            ] 
           ),
         )
           
