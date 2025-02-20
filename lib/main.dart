@@ -45,38 +45,21 @@ class _ContainerPageState extends State<ContainerPage> {
     var time = DateTime.now();
     return Scaffold(
         appBar: AppBar(
-          title: Text('SizedBox in Flutter'),
+          title: Text('Rich Text Widget in Flutter'),
          // backgroundColor: Colors.purple,
         ),
         body: Center(
-          child: Column(
-            children: [
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: 100,
-                  maxWidth: 200,
-                  minHeight: 50,
-                  minWidth: 80
-              ),
-                     
-             child: SizedBox(
-                  child: ElevatedButton(onPressed: () { }
-                  , child: Text("Button 1")),
-                  ),
-              ),
-             
-             SizedBox( //this sizedbox is used for giving spacing
-                    width: 20,
-                    height: 20,
-             ),
-              SizedBox.square(
-                dimension: 150,
-                child: ElevatedButton(onPressed: () {
-                  
-                }, child: Text("Button 2")),
-              )
-            ],//end of children
-          ),
+          child: RichText(text: TextSpan(
+            style: TextStyle(
+              fontSize: 27,
+              color: Colors.blueGrey
+            ),
+            children: <TextSpan>[
+              TextSpan(text: "It's "),
+              TextSpan(text: "all ",style: TextStyle(fontSize: 35, color: Colors.blueAccent, fontWeight: FontWeight.bold)),
+              TextSpan(text: "about widgets..." , style:TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold))
+            ]
+          )),
         )
           
                  
