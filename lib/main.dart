@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_first_flutter_app/ui_helper/util.dart';
 import 'package:intl/intl.dart';
 import 'package:my_first_flutter_app/widgets/rounded_btn.dart';
@@ -45,10 +46,24 @@ class _ContainerPageState extends State<ContainerPage> {
     var time = DateTime.now();
     return Scaffold(
         appBar: AppBar(
-          title: Text('Icon Widget in Flutter'),
+          title: Text('Awesome Icon in Flutter'),
          // backgroundColor: Colors.purple,
         ),
-        body: Center(child: Icon(Icons.lock, size: 100,color: Colors.red ))
+        body: Center(
+          child: Wrap(
+            children: [
+              Icon(Icons.lock, size: 80,),
+              SizedBox(width: 20,height: 20,),
+              FaIcon(FontAwesomeIcons.aws, size: 80,),
+              SizedBox(width: 20,height: 20,),
+              FaIcon(FontAwesomeIcons.calculator,  size: 80,),
+              SizedBox(width: 20,height: 20,),
+              FaIcon(FontAwesomeIcons.googleDrive, size: 80,),
+              SizedBox(width: 20,height: 20,),
+              FaIcon(FontAwesomeIcons.paypal, size: 80,)
+            ],
+          ),
+        )
           
                  
         ); //end of Scaffold
