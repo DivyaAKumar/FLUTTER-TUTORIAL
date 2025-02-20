@@ -45,171 +45,41 @@ class _ContainerPageState extends State<ContainerPage> {
     var time = DateTime.now();
     return Scaffold(
         appBar: AppBar(
-          title: Text('Wrap widget in Flutter'),
+          title: Text('SizedBox in Flutter'),
          // backgroundColor: Colors.purple,
         ),
-        body: 
-          Container(
-            width: double.infinity,//full width
-            height: double.infinity,//full height
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Wrap(
-                direction: Axis.horizontal, //for displaying as column
-                spacing: 11, //for giving (.mentioned) space between the container
-                runSpacing: 11, //for giving .opp_mentioned spacing
-                alignment: WrapAlignment.spaceEvenly, 
-                children: [
-                  Container(
-                    width: 70,
-                    height: 70,
-                    color: Colors.amber,
-                  ),
-              
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.red,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.blue,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.green,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.brown,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.orange,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.pink,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.deepPurpleAccent,
-                      ),
-              
-                       Container(
-                    width: 70,
-                    height: 70,
-                    color: Colors.amber,
-                  ),
-              
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.red,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.blue,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.green,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.brown,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.orange,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.pink,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.deepPurpleAccent,
-                      ),
-
-                       Container(
-                    width: 70,
-                    height: 70,
-                    color: Colors.amber,
-                  ),
-              
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.red,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.blue,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.green,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.brown,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.orange,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.pink,
-                      ),
-              
-                      Container(
-              width: 70,
-              height: 70,
-              color: Colors.deepPurpleAccent,
-                      ),
-              ], //end of children
+        body: Center(
+          child: Column(
+            children: [
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: 100,
+                  maxWidth: 200,
+                  minHeight: 50,
+                  minWidth: 80
               ),
-            ),
+                     
+             child: SizedBox(
+                  child: ElevatedButton(onPressed: () { }
+                  , child: Text("Button 1")),
+                  ),
+              ),
+             
+             SizedBox( //this sizedbox is used for giving spacing
+                    width: 20,
+                    height: 20,
+             ),
+              SizedBox.square(
+                dimension: 150,
+                child: ElevatedButton(onPressed: () {
+                  
+                }, child: Text("Button 2")),
+              )
+            ],//end of children
           ),
+        )
+          
+                 
         ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
