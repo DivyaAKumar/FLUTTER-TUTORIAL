@@ -39,36 +39,110 @@ class ContainerPage extends StatefulWidget {
 }
 
 class _ContainerPageState extends State<ContainerPage> {
-
+   String result ="";
   @override
   Widget build(BuildContext context) {
     //var arr_name = ["Ram", 'Sita', 'Laxman', 'Dinesh'];
     var time = DateTime.now();
+    var no1Controller = TextEditingController();
+    var no2Controller = TextEditingController();
+ 
     return Scaffold(
         appBar: AppBar(
-          title: Text('Positioned widget in Flutter'),
+          title: Text('Basic Calculator in Flutter'),
          // backgroundColor: Colors.purple,
         ),
-        body: Container(
-          height: double.infinity,
-          width: double.infinity,
-          color: Colors.lightBlueAccent,
-          child: Stack(
-            children:[Positioned(
-              bottom: 70,
-              left: 150,
-              child: Container(
-                width: 100,
-                height: 100,
-                color: Colors.white,
-                child: Center(child: Text("positioned container")),
+        body: Center(
+          child: Container(
+            color: Colors.lightBlueAccent,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextField(
+                    keyboardType: TextInputType.number,
+                    controller: no1Controller,
+                    
+                  ),
+                  TextField(
+                    keyboardType: TextInputType.number,
+                    controller: no2Controller,
+                  ),
+              
+                  SizedBox(height: 20, width: 20,),
+              
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  
+                      children: [
+                        ElevatedButton(onPressed: () {
+                           var no1 = int.parse(no1Controller.text.toString());
+                           var no2 = int.parse(no2Controller.text.toString());
+                           var sum = no1+ no2;
+
+                           result = "The Sum of $no1 and $no2 is $sum";
+
+                           setState(() {
+                            
+                           });
+
+
+                        }, child: Text("Add")),
+                        ElevatedButton(onPressed: () {
+                           var no1 = int.parse(no1Controller.text.toString());
+                           var no2 = int.parse(no2Controller.text.toString());
+                           var diff = no1- no2;
+                          
+                           result = "The difference of $no1 and $no2 is $diff";
+
+                           setState(() {
+                             
+                           });
+
+                           
+
+                        }, child: Text("Sub")),
+                          
+                        ElevatedButton(onPressed: () {
+                           var no1 = int.parse(no1Controller.text.toString());
+                           var no2 = int.parse(no2Controller.text.toString());
+                           var product = no1* no2;
+
+                           result= "The product of $no1 and $no2 is ${product.toStringAsFixed(2)}";
+
+                           setState(() {
+                             
+                           });
+                        }, child: Text("Mul")),
+                          
+                        ElevatedButton(onPressed: () {
+                           var no1 = int.parse(no1Controller.text.toString());
+                           var no2 = int.parse(no2Controller.text.toString());
+                           var div = no1/no2;
+                          
+                           result= "$no1 and $no2 when divided gives ${div.toStringAsFixed(2)}";
+
+                           setState(() {
+                            
+
+                           });
+                        }, child: Text("Div"))
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: Text("$result", style: TextStyle(fontSize: 25),)),
+                  ),
+                ],
               ),
             ),
-            ] 
           ),
         )
-          
-                 
+
         ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
