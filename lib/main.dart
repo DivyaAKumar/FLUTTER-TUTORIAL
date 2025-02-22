@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_first_flutter_app/IntroScreen.dart';
 import 'package:my_first_flutter_app/ui_helper/util.dart';
 import 'package:intl/intl.dart';
 import 'package:my_first_flutter_app/widgets/rounded_btn.dart';
@@ -26,19 +27,19 @@ class MyApp extends StatelessWidget {
         titleTextStyle: TextStyle(color: Colors.white, fontSize: 20), 
   ),
       ),
-      home: ContainerPage(),
+      home: IntroScreen(),
     );
   } //end of widget build
 } //end of MyApp class
 
-class ContainerPage extends StatefulWidget {
-  const ContainerPage({super.key});
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
 
   @override
-  State<ContainerPage> createState() => _ContainerPageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _ContainerPageState extends State<ContainerPage> {
+class _MyHomePageState extends State<MyHomePage> {
    String result ="";
   @override
   Widget build(BuildContext context) {
@@ -49,38 +50,13 @@ class _ContainerPageState extends State<ContainerPage> {
  
     return Scaffold(
         appBar: AppBar(
-          title: Text('Constrained Box in Flutter'),
+          title: Text('Home Screen'),
          
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ConstrainedBox(constraints: BoxConstraints(
-                maxHeight: 100,
-                maxWidth: 200,
-                minHeight: 20,
-                minWidth: 45
-                
-              ),
-              child: Text(" Hello world Hello world Hello world Hello world Hello world Hello world", style: TextStyle(fontSize: 25, overflow: TextOverflow.fade),),
-              ),
-              const SizedBox(height: 30, width: 30,),
-          
-              ConstrainedBox(constraints: BoxConstraints(
-                maxHeight: 100,
-                maxWidth: 300,
-                minHeight: 100,
-                minWidth: 200 
-              ),
-              child: ElevatedButton(onPressed: 
-              () {
-                
-              }, child: Text("Click")),)
-            ],
-          ),
-        ),
-        
+        body: Center(child: Container(width:200, height: 200, child: Text("Great! you successfully switched the page!",style: TextStyle(fontSize: 30),
+        )
+        )
+        )
         ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
