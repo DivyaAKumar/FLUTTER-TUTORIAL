@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   return Scaffold(
     body: Container(
       color: Colors.indigo[900],
-      child: Center(child: Text("Hotstar", style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)),
+      child: Center(child: Text("Flutter", style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)),
     ),
   );
   }

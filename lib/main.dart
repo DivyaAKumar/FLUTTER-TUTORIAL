@@ -46,8 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     //var arr_name = ["Ram", 'Sita', 'Laxman', 'Dinesh'];
     var time = DateTime.now();
-    var no1Controller = TextEditingController();
-    var no2Controller = TextEditingController();
+    var name = TextEditingController();
+    //var no2Controller = TextEditingController();
  
     return Scaffold(
         appBar: AppBar(
@@ -58,13 +58,23 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width:200, 
-              height: 200, 
-              child: Text("Great! you successfully displayed splash screen!",style: TextStyle(fontSize: 30),
-            )
+              width:250, 
+              height: 100, 
+              child: Text("Hey user! Type in your name please.",style: TextStyle(fontSize: 30),
             ),
+
+          
+            ),
+
+            Container(
+              width: 250,
+              child: TextField(
+                controller: name,
+              ),
+            ),
+            const SizedBox(width: 50,height: 50,),
             Center(child: ElevatedButton(onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => IntroScreen(),));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => IntroScreen(name.text.toString()),));
             }, child: Text("Tap")))
           ],
         )
