@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         titleTextStyle: TextStyle(color: Colors.white, fontSize: 20), 
   ),
       ),
-      home: SplashScreen(),
+      home: MyHomePage(),
     );
   } //end of widget build
 } //end of MyApp class
@@ -41,44 +41,37 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-   String result ="";
+  
+   RangeValues values = RangeValues(0, 100);
   @override
   Widget build(BuildContext context) {
     //var arr_name = ["Ram", 'Sita', 'Laxman', 'Dinesh'];
     var time = DateTime.now();
     var name = TextEditingController();
+    RangeLabels labels = RangeLabels(values.start.toString(), values.end.toString());
     //var no2Controller = TextEditingController();
  
     return Scaffold(
         appBar: AppBar(
-          title: Text('Home Screen'),
-         
-        ),
-        body: Center(child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width:250, 
-              height: 100, 
-              child: Text("Hey user! Type in your name please.",style: TextStyle(fontSize: 30),
-            ),
-
           
-            ),
+          title: Text('Range Slider in Flutter'),
+           
+        ),
+      body: RangeSlider(values: values,
+       min: 0,
+       max: 100,
+       labels:labels,
+       activeColor: Colors.blue,
+        divisions: 10,
+        inactiveColor:  Colors.blue[100],
+       onChanged: (newValue){
+        values= newValue;
+        print('${newValue.start}, ${newValue.end}');
+        setState(() {
+          
+        });
 
-            Container(
-              width: 250,
-              child: TextField(
-                controller: name,
-              ),
-            ),
-            const SizedBox(width: 50,height: 50,),
-            Center(child: ElevatedButton(onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => IntroScreen(name.text.toString()),));
-            }, child: Text("Tap")))
-          ],
-        )
-        )
+      })
         ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
