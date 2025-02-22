@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_first_flutter_app/IntroScreen.dart';
+import 'package:my_first_flutter_app/SplashScreen.dart';
 import 'package:my_first_flutter_app/ui_helper/util.dart';
 import 'package:intl/intl.dart';
 import 'package:my_first_flutter_app/widgets/rounded_btn.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         titleTextStyle: TextStyle(color: Colors.white, fontSize: 20), 
   ),
       ),
-      home: IntroScreen(),
+      home: SplashScreen(),
     );
   } //end of widget build
 } //end of MyApp class
@@ -53,8 +54,19 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text('Home Screen'),
          
         ),
-        body: Center(child: Container(width:200, height: 200, child: Text("Great! you successfully switched the page!",style: TextStyle(fontSize: 30),
-        )
+        body: Center(child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width:200, 
+              height: 200, 
+              child: Text("Great! you successfully displayed splash screen!",style: TextStyle(fontSize: 30),
+            )
+            ),
+            Center(child: ElevatedButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => IntroScreen(),));
+            }, child: Text("Tap")))
+          ],
         )
         )
         ); //end of Scaffold
