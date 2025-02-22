@@ -49,100 +49,38 @@ class _ContainerPageState extends State<ContainerPage> {
  
     return Scaffold(
         appBar: AppBar(
-          title: Text('Basic Calculator in Flutter'),
-         // backgroundColor: Colors.purple,
+          title: Text('Constrained Box in Flutter'),
+         
         ),
         body: Center(
-          child: Container(
-            color: Colors.lightBlueAccent,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextField(
-                    keyboardType: TextInputType.number,
-                    controller: no1Controller,
-                    
-                  ),
-                  TextField(
-                    keyboardType: TextInputType.number,
-                    controller: no2Controller,
-                  ),
-              
-                  SizedBox(height: 20, width: 20,),
-              
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  
-                      children: [
-                        ElevatedButton(onPressed: () {
-                           var no1 = int.parse(no1Controller.text.toString());
-                           var no2 = int.parse(no2Controller.text.toString());
-                           var sum = no1+ no2;
-
-                           result = "The Sum of $no1 and $no2 is $sum";
-
-                           setState(() {
-                            
-                           });
-
-
-                        }, child: Text("Add")),
-                        ElevatedButton(onPressed: () {
-                           var no1 = int.parse(no1Controller.text.toString());
-                           var no2 = int.parse(no2Controller.text.toString());
-                           var diff = no1- no2;
-                          
-                           result = "The difference of $no1 and $no2 is $diff";
-
-                           setState(() {
-                             
-                           });
-
-                           
-
-                        }, child: Text("Sub")),
-                          
-                        ElevatedButton(onPressed: () {
-                           var no1 = int.parse(no1Controller.text.toString());
-                           var no2 = int.parse(no2Controller.text.toString());
-                           var product = no1* no2;
-
-                           result= "The product of $no1 and $no2 is ${product.toStringAsFixed(2)}";
-
-                           setState(() {
-                             
-                           });
-                        }, child: Text("Mul")),
-                          
-                        ElevatedButton(onPressed: () {
-                           var no1 = int.parse(no1Controller.text.toString());
-                           var no2 = int.parse(no2Controller.text.toString());
-                           var div = no1/no2;
-                          
-                           result= "$no1 and $no2 when divided gives ${div.toStringAsFixed(2)}";
-
-                           setState(() {
-                            
-
-                           });
-                        }, child: Text("Div"))
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(child: Text("$result", style: TextStyle(fontSize: 25),)),
-                  ),
-                ],
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ConstrainedBox(constraints: BoxConstraints(
+                maxHeight: 100,
+                maxWidth: 200,
+                minHeight: 20,
+                minWidth: 45
+                
               ),
-            ),
+              child: Text(" Hello world Hello world Hello world Hello world Hello world Hello world", style: TextStyle(fontSize: 25, overflow: TextOverflow.fade),),
+              ),
+              const SizedBox(height: 30, width: 30,),
+          
+              ConstrainedBox(constraints: BoxConstraints(
+                maxHeight: 100,
+                maxWidth: 300,
+                minHeight: 100,
+                minWidth: 200 
+              ),
+              child: ElevatedButton(onPressed: 
+              () {
+                
+              }, child: Text("Click")),)
+            ],
           ),
-        )
-
+        ),
+        
         ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
