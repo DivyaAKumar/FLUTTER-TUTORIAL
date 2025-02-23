@@ -28,50 +28,166 @@ class MyApp extends StatelessWidget {
         titleTextStyle: TextStyle(color: Colors.white, fontSize: 20), 
   ),
       ),
-      home: MyHomePage(),
+      home: IntroScreen(),
     );
   } //end of widget build
 } //end of MyApp class
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
+  // const MyHomePage({super.key});
+  var nameFromIntro;
+  MyHomePage(this.nameFromIntro);
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+    var result = "";
+  var nameFromIntro; 
+  void initState() {
+    super.initState();
+    nameFromIntro = widget.nameFromIntro; 
+  }
+
+  @override
   
-   RangeValues values = RangeValues(0, 100);
+  RangeValues values = RangeValues(0, 100);
+
+
+   
   @override
   Widget build(BuildContext context) {
     //var arr_name = ["Ram", 'Sita', 'Laxman', 'Dinesh'];
     var time = DateTime.now();
-    var name = TextEditingController();
+    var wtController = TextEditingController();
+    var ftController = TextEditingController();
+    var inController = TextEditingController();
+  
+
     RangeLabels labels = RangeLabels(values.start.toString(), values.end.toString());
     //var no2Controller = TextEditingController();
  
     return Scaffold(
         appBar: AppBar(
           
-          title: Text('Range Slider in Flutter'),
+          title: Text('BMI Calculator'),
            
         ),
-      body: RangeSlider(values: values,
-       min: 0,
-       max: 100,
-       labels:labels,
-       activeColor: Colors.blue,
-        divisions: 10,
-        inactiveColor:  Colors.blue[100],
-       onChanged: (newValue){
-        values= newValue;
-        print('${newValue.start}, ${newValue.end}');
-        setState(() {
+      body: Center(
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(child: Text("Welcome ${nameFromIntro}!", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.deepOrangeAccent),
+              )
+            
+              ),
+              SizedBox(width: 50,height: 50,),
+              Container(
+                width: 270,
+                height: 250,
+                child: Column(
+                  children: [
+                    TextField(
+                      controller: wtController,
+                      decoration: InputDecoration(
+                        label: Text("Enter your Weight(In Kg)"),
+                        prefixIcon: Icon(Icons.line_weight),
+                         border: OutlineInputBorder(),
+                  errorStyle: TextStyle(color: Colors.red),
+                      ),
+                      keyboardType: TextInputType.numberWithOptions(),
+                     
+                    ), 
+                    SizedBox(width: 50,height: 20,),
+                    TextField(
+                      controller: ftController,
+                      decoration: InputDecoration(
+                        label: Text("Enter your height(In feet)"),
+                        prefixIcon: Icon(Icons.height),
+                         border: OutlineInputBorder(),
+                  errorStyle: TextStyle(color: Colors.red),
+                      ),
+                      keyboardType: TextInputType.numberWithOptions()
+                    ),
+                    SizedBox(width: 50,height: 20,),
+                    TextField(
+                      controller: inController,
+                      decoration: InputDecoration(
+                        label: Text("Enter your height(In Inches)"),
+                        prefixIcon: Icon(Icons.height),
+                         border: OutlineInputBorder(),
+                  errorStyle: TextStyle(color: Colors.red),
+                      ),
+                      keyboardType: TextInputType.numberWithOptions()
+                      
+                    ),
+                  ],
+                ),
+              ),
+              ElevatedButton(onPressed: () {
+                
+                var wt = wtController.text.toString();
+                var ft= ftController.text.toString();
+                var inch = inController.text.toString();
           
-        });
-
-      })
+                if(wt!= "" && ft!="" && inch!=""){
+                    //Bmi calculation 
+                    var iWt = int.parse(wt);
+                    var ift = int.parse(ft);
+                    var iInch = int.parse(inch);
+          
+                    var tInch = (ift*12) + iInch;
+          
+                    var tcm = tInch * 2.54;
+          
+                    var tm = tcm/100;
+          
+          
+                    var bmi = iWt/(tm*tm);
+                    
+          
+                    if (18<=bmi && bmi <= 25) {
+                      setState(() {
+                        result = "Your bmi is ${bmi.toStringAsFixed(2)}, It's Normal.";
+                      }
+                      );
+                      
+                    }
+                    else if(bmi>25){
+                      setState(() {
+                        result = "Your bmi is ${bmi.toStringAsFixed(2)}, You're Overweight.";
+                      });
+          
+                    }
+                    else if(bmi>25 && bmi <=29){
+                      setState(() {
+                        result= "Your bmi is ${bmi.toStringAsFixed(2)}, You're Underweight.";
+                      });
+                    }
+                   else{
+                    setState(() {
+                      result= "Your bmi is ${bmi.toStringAsFixed(2)}, You're Obese.";
+                    });
+                   }
+          
+          
+                }
+                else{
+                  setState(() {
+                    result= "Please fill all the required fields!";
+                  });
+                }
+              }, child: Text("Calculate")),
+          
+               SizedBox(width: 50,height: 30,),
+          
+              Text(result, style: TextStyle(fontSize: 20),),
+            ],
+          
+          ),
+        ),
+      ),
         ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
