@@ -42,7 +42,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
    var _width = 200.0; //to create pvt field inside dart _ is used before name
   var _height = 100.0;
- 
+ var my_opacity =1.0;
+ bool isVisible =true;
    bool flag =true;
    Color bgColor = Colors.blueGrey;
    Decoration myDecor = BoxDecoration(
@@ -54,17 +55,40 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           
-          title: Text('Animated Container'),
+          title: Text('Animated Opacity'),
            
         ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            AnimatedOpacity(opacity:my_opacity, duration: Duration(seconds: 2),
+            curve: Curves.slowMiddle,
+            child: Container(
+              width: 200,
+              height: 100,
+              color: Colors.blue,
+            ),
+            ),
+            ElevatedButton(onPressed: () {
+              setState(() {
+                 if (isVisible) {
+                my_opacity = 0.0;
+                isVisible=false; //invisible
+              } else {
+                my_opacity =1.0; //visible
+                isVisible=true;
+              }
+             
+              });
+             
+            }, child: Text("Change")),
+
+            SizedBox(width: 20,height: 20,),
             AnimatedContainer(
               duration: Duration(seconds: 2),
               width: _width ,
-              curve: Curves.bounceOut,
+              curve: Curves.elasticInOut,
               height: _height,
               //color: bgColor,
               decoration: myDecor,
