@@ -6,6 +6,7 @@ import 'package:my_first_flutter_app/IntroScreen.dart';
 import 'package:my_first_flutter_app/SplashScreen.dart';
 import 'package:my_first_flutter_app/ui_helper/util.dart';
 import 'package:intl/intl.dart';
+import 'package:my_first_flutter_app/widgets/detailedPage.dart';
 import 'package:my_first_flutter_app/widgets/rounded_btn.dart';
 
 void main() {
@@ -76,99 +77,27 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           
-          title: Text('Cross fade animation'),
+          title: Text('Hero Animation(V.Imp)'),
            
         ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [ 
-            AnimatedCrossFade(
-            firstChild: Container(
-              width: 300,
-              height: 300,
-              color: Colors.amber,
-
-            ), 
-            secondChild: Image.asset("assets/images/Disney.png", width: 200,height: 100, color: Colors.black,), 
-            crossFadeState: isFirst ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-            sizeCurve: Curves.fastOutSlowIn,
-            firstCurve: Curves.bounceIn,
-            secondCurve: Curves.bounceInOut,
-
-            duration: Duration(seconds: 2)
-            ),
-
-            ElevatedButton(onPressed: () {
-              reload();
-            }, child: Text("Animate")),
-
-
-            AnimatedOpacity(opacity:my_opacity, duration: Duration(seconds: 2),
-            curve: Curves.slowMiddle,
-            child: Container(
-              width: 200,
-              height: 100,
-              color: Colors.blue,
-            ),
-            ),
-
-            ElevatedButton(onPressed: () {
-              setState(() {
-                 if (isVisible) {
-                my_opacity = 0.0;
-                isVisible=false; //invisible
-              } else {
-                my_opacity =1.0; //visible
-                isVisible=true;
-              }
-             
-              });
-             
-            }, child: Text("Change")),
-
-            SizedBox(width: 20,height: 20,),
-            // AnimatedContainer(
-            //   duration: Duration(seconds: 2),
-            //   width: _width ,
-            //   curve: Curves.elasticInOut,
-            //   height: _height,
-            //   //color: bgColor,
-            //   decoration: myDecor,
-        
-            // ),
-            // ElevatedButton(onPressed: () {
-            //   //_width =100.0;
-            //   //_height =200.0;
-
-            
-            //   setState(() {
-            //         //to toggle now
-            //   if (flag) {
-            //     _width=100;
-            //     _height=200;
-            //    // bgColor = Colors.orange;
-            //     myDecor = BoxDecoration(
-            //       borderRadius: BorderRadius.circular(2),
-            //        color: Colors.orange
-            //     );
-            //     flag =false;
-            //   } 
-            //   else{
-            //     _width=200;
-            //     _height=100;
-            //     //bgColor= Colors.blueGrey;
-            //      myDecor = BoxDecoration(
-            //       borderRadius: BorderRadius.circular(2),
-            //       color: Colors.blueGrey
-            //     );
-            //     flag=true;
-            //   }
-            //   });
-            // }, child: Text("Animate"))
-          ],
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: const Color.fromARGB(255, 50, 6, 170),
+        child: Center(
+          child: InkWell(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Detailedpage(),));
+            },
+            child: Hero(
+              tag: 'disney', 
+              child: Image.asset("assets/images/Disney.png", width: 200,height: 100,)
+              
+              ),
+          ),
         ),
       )
+        
         ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
