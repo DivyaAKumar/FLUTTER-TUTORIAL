@@ -73,110 +73,85 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Clip RRect'), 
+        title: Text('Gradient as App Background'), //MORE FROM WEB GRADIENTS SITE
       ),
+      // (0,0)......(1,0)
+      // (0,1).......(1,1)
       body: Center(
-        child: ClipRRect(
-         // borderRadius: BorderRadius.circular(21),
-         //borderRadius:  BorderRadius.all(Radius.elliptical(75, 50)),
-         borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50), topRight: Radius.circular(75)),
-          child: Image.asset("assets/images/profile1.jpg", width: 250,height: 250,),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+              //   Colors.purple.shade300,
+              //   Colors.indigo.shade300,
+              //  Colors.blue,
+              Color(0xff4facfe),//ff opaque //00 transparent 
+              Color(0xff00f2fe)
+              ],
+              begin: FractionalOffset(1.0, 0.0 ),
+              end: FractionalOffset(0.0, 1.0),
+             
+              ),
+            //  gradient: RadialGradient(
+            //   colors: [
+            //   //   Colors.purple.shade300,
+            //   //   Colors.indigo.shade300,
+            //   //  Colors.blue,
+            //    Color(0xff00f2fe),
+            //   Color(0xff4facfe),//ff opaque //00 transparent 
+           
+            //   ],
+            // center: Alignment.bottomCenter,
+            //  stops: [0.0,1.0]
+            //   )
+          ),
+          child: Center(
+            child: Padding(padding: const EdgeInsets.all(21.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+               TextField( 
+                //controller: name,
+                 decoration: InputDecoration(
+                        hintText: "Enter your weight here.",
+                          prefixIcon: Icon(Icons.verified_user, color: Colors.white),
+                           border: OutlineInputBorder(),
+                           
+                        ),
+                          keyboardType: TextInputType.text,
+        
+              ),
+                  
+              const SizedBox(
+                width: 20,height: 20,
+              ) ,
+        
+              TextField( 
+               // controller: name,
+                 decoration: InputDecoration(
+                        hintText: "Enter your height here.",
+                          prefixIcon: Icon(Icons.verified_user, color: Colors.white),
+                           border: OutlineInputBorder(),
+                   
+                        ),
+                          keyboardType: TextInputType.text,
+              ),
+               
+        const SizedBox(
+                width: 20,height: 20,
+              ) ,
+        
+              ElevatedButton(onPressed: () {
+               
+              }, child: Text("Calculate"))
+              ],
+            ), 
+            ),
+          ),
         ),
       )
 
-      // Container(
-      //   height: 100,
-      //   width: double.infinity,
-      //   color: Colors.deepPurpleAccent,
-      //   // decoration: BoxDecoration(
-
-      //   // ),
-
-      // ),
-      // Container(
-      //   height: 100,
-      //   width: double.infinity,
-      //   color: Colors.blueGrey,
-      //   // decoration: BoxDecoration(
-
-      //   // ),
-
-      // ),Container(
-      //   height: 100,
-      //   width: double.infinity,
-      //   color: Colors.orange,
-      //   // decoration: BoxDecoration(
-
-      //   // ),
-
-      // ),Container(
-      //   height: 100,
-      //   width: double.infinity,
-      //   color: Colors.red,
-      //   // decoration: BoxDecoration(
-
-      //   // ),
-
-      // ),Container(
-      //   height: 100,
-      //   width: double.infinity,
-      //   color: Colors.pink,
-      //   // decoration: BoxDecoration(
-
-      //   // ),
-
-      // ),
-      // Container(
-      //   height: 100,
-      //   width: double.infinity,
-      //   color: Colors.purple,
-      //   // decoration: BoxDecoration(
-
-      //   // ),
-
-      // ),
-      // Container(
-      //   height: 100,
-      //   width: double.infinity,
-      //   color: Colors.green,
-      //   // decoration: BoxDecoration(
-
-      //   // ),
-
-      // ),
-      // Container(
-      //   height: 100,
-      //   width: double.infinity,
-      //   color: Colors.blue,
-      //   // decoration: BoxDecoration(
-
-      //   // ),
-
-      // ),
-      // Container(
-      //   height: 100,
-      //   width: double.infinity,
-      //   color: Colors.orange,
-      //   // decoration: BoxDecoration(
-
-      //   // ),
-
-      // ),
-      // Container(
-      //   height: 100,
-      //   width: double.infinity,
-      //   color: Colors.red,
-
-      // ),
-      // Container(
-      //   height: 100,
-      //   width: double.infinity,
-      //   color: Colors.amber,
-      //   // decoration: BoxDecoration(
-
-      //   // ),
-
-      // ),
+     
     ); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
