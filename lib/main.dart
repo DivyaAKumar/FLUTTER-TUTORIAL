@@ -44,8 +44,52 @@ class _MyHomePageState extends State<MyHomePage> {
   var _height = 100.0;
   var my_opacity = 1.0;
   bool isFirst = true;
-  var arrIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,14,15,16];
+  var arrIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
+  var arrData = [
+    {'name': 'Alice', 'mobno': '7898114074', 'unread': '1'},
+    {'name': 'Michael', 'mobno': '9234567890', 'unread': '5'},
+    {'name': 'Sophia', 'mobno': '8123456789', 'unread': '2'},
+    {'name': 'James', 'mobno': '7567891234', 'unread': '3'},
+    {'name': 'Alice', 'mobno': '7898114074', 'unread': '1'},
+    {'name': 'Michael', 'mobno': '9234567890', 'unread': '5'},
+    {'name': 'Sophia', 'mobno': '8123456789', 'unread': '2'},
+    {'name': 'James', 'mobno': '7567891234', 'unread': '3'},
+    {'name': 'Alice', 'mobno': '7898114074', 'unread': '1'},
+    {'name': 'Michael', 'mobno': '9234567890', 'unread': '5'},
+    {'name': 'Sophia', 'mobno': '8123456789', 'unread': '2'},
+    {'name': 'James', 'mobno': '7567891234', 'unread': '3'},
+    {'name': 'Alice', 'mobno': '7898114074', 'unread': '1'},
+    {'name': 'Michael', 'mobno': '9234567890', 'unread': '5'},
+    {'name': 'Sophia', 'mobno': '8123456789', 'unread': '2'},
+    {'name': 'James', 'mobno': '7567891234', 'unread': '3'},
+
+  ];
+
+//   var arrData1 = [
+//     {
+//      'name': 'Alice',
+//      'mobno': '7898114074',
+//      'unread' : '1',
+//     },
+
+// 'Alice',
+// 'Michael',
+// 'Sophia',
+// 'James',
+// 'Olivia',
+// 'Daniel',
+// 'Isabella',
+// 'Ethan',
+// 'Emma',
+// 'Alexander',
+// 'Mia',
+// 'Benjamin',
+// 'Charlotte',
+// 'William',
+// 'Amelia',
+
+//   ];
   bool isVisible = true;
   bool flag = true;
   Color bgColor = Colors.blueGrey;
@@ -72,86 +116,46 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Gradient as App Background'), //MORE FROM WEB GRADIENTS SITE
-      ),
-      // (0,0)......(1,0)
-      // (0,1).......(1,1)
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-              //   Colors.purple.shade300,
-              //   Colors.indigo.shade300,
-              //  Colors.blue,
-              Color(0xff4facfe),//ff opaque //00 transparent 
-              Color(0xff00f2fe)
-              ],
-              begin: FractionalOffset(1.0, 0.0 ),
-              end: FractionalOffset(0.0, 1.0),
-             
-              ),
-            //  gradient: RadialGradient(
-            //   colors: [
-            //   //   Colors.purple.shade300,
-            //   //   Colors.indigo.shade300,
-            //   //  Colors.blue,
-            //    Color(0xff00f2fe),
-            //   Color(0xff4facfe),//ff opaque //00 transparent 
-           
-            //   ],
-            // center: Alignment.bottomCenter,
-            //  stops: [0.0,1.0]
-            //   )
-          ),
-          child: Center(
-            child: Padding(padding: const EdgeInsets.all(21.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-               TextField( 
-                //controller: name,
-                 decoration: InputDecoration(
-                        hintText: "Enter your weight here.",
-                          prefixIcon: Icon(Icons.verified_user, color: Colors.white),
-                           border: OutlineInputBorder(),
-                           
-                        ),
-                          keyboardType: TextInputType.text,
-        
-              ),
-                  
-              const SizedBox(
-                width: 20,height: 20,
-              ) ,
-        
-              TextField( 
-               // controller: name,
-                 decoration: InputDecoration(
-                        hintText: "Enter your height here.",
-                          prefixIcon: Icon(Icons.verified_user, color: Colors.white),
-                           border: OutlineInputBorder(),
-                   
-                        ),
-                          keyboardType: TextInputType.text,
-              ),
-               
-        const SizedBox(
-                width: 20,height: 20,
-              ) ,
-        
-              ElevatedButton(onPressed: () {
-               
-              }, child: Text("Calculate"))
-              ],
-            ), 
-            ),
-          ),
+        appBar: AppBar(
+          title:
+              Text('Mapping lists to widgets'), //MORE FROM WEB GRADIENTS SITE
         ),
-      )
+        // (0,0)......(1,0)
+        // (0,1).......(1,1)
+        body: Container(
+            child: ListView(
+          children: arrData
+              .map((value) => ListTile(
+                    leading: Icon(Icons.account_circle),
+                    title: Text(value['name']
+                        .toString()), 
+                    subtitle: Text(value['mobno'].toString()),
+                    trailing: CircleAvatar(
+                      radius: 12,
+                      backgroundColor: Colors.blue[200],
+                      child: Text(value['unread'].toString(),style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),)
+                      ),
+                  ))
+              .toList(),
+        )
 
-     
-    ); //end of Scaffold
+            //   // child: ListView(
+            //   //   children: arrData.map((value) {
+            //   //     return Padding(
+            //   //       padding: const EdgeInsets.all(8.0),
+            //   //       child: Container(
+            //   //         decoration: BoxDecoration(
+            //   //           borderRadius: BorderRadius.circular(20),
+            //   //            color: Colors.blueAccent,
+            //   //         ),
+            //   //         width: double.infinity,
+            //   //         height: 100,
+            //   //         child: Center(child: Text(${value}, style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),), ),
+
+            //   //       ),
+            //   //     );
+            //   //   },).toList()
+            // ),
+            )); //end of Scaffold
   } //end of Widget build
 } //end of _ContainerPageState
