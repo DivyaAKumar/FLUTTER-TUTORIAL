@@ -73,27 +73,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('List view scrollview'),
+        title: Text('Clip RRect'), 
       ),
       body: Center(
-        child: ListWheelScrollView(
-          itemExtent: 200,
-          children: arrIndex.map((value) => Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  child: Center(child: Text('$value', style: TextStyle(fontSize: 25),)),
-                      height: double.infinity,
-                      decoration: BoxDecoration(
-                         color: Colors.blue,
-                         borderRadius: BorderRadius.circular(21)
-                      ),
-                     
-                    ),
-          ))
-        
-              .toList(), // Ensure it's a List<Widget>
+        child: ClipRRect(
+         // borderRadius: BorderRadius.circular(21),
+         //borderRadius:  BorderRadius.all(Radius.elliptical(75, 50)),
+         borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50), topRight: Radius.circular(75)),
+          child: Image.asset("assets/images/profile1.jpg", width: 250,height: 250,),
         ),
-      ),
+      )
 
       // Container(
       //   height: 100,
