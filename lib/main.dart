@@ -40,50 +40,105 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
-  late Animation animation; //baad me initialize karne ke liye late keyword
-  late Animation colorAnimation;
-  late AnimationController animationController;
-  
-
+ 
+  //late Animation _animation; // _ to make class private
+  late AnimationController _animationController;
   @override
-  
   void initState() {
-    // TODO: implement initState
+  
     super.initState();
-    animationController = AnimationController(vsync: this, duration: Duration( seconds: 5));
-    animation = Tween(begin: 250.0,end: 100.0).animate(animationController); //make sure to give double 
-    
-    
-    colorAnimation = ColorTween(begin: Colors.indigo,end: Colors.red).animate(animationController);
-    animationController.addListener(() {
-      print(animation.value);
-      setState(() {
-        
-      
-      });
-    },);
-
-    animationController.forward(); //to start animation 
+    _animationController = AnimationController(vsync: this,duration: Duration(seconds: 3) , lowerBound: 0.3 );
+ // alternative way -// _animation = Tween(begin: 0.0,end: 1.0).animate(_animationController);
    
+
+   _animationController.addListener(() {
+     setState(() {
+       
+     });
+   },);
+    _animationController.forward();
   }
+ 
+ var listRadius =[100.0,150.0,200.0,250.0,300.0,350.0];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title:
-              Text('Tween animation'), //between(begin and end specify), 
-        ), //AppBar            //2.controller-controls animation   
-                       //mixin class-(single tick provider)-gives main points b/w begin and end-gives values(timing duration divide) to apply animation 
+              Text('Ripple Effect Animation'), 
+        ), //AppBar           
+       //many circles
+       //enlarging the circles
+       //opacity of circles more at end
 
+         body: 
 
-        body: Center(
-          child: Container(
-            width: animation.value,
-            height: animation.value,
-            color: colorAnimation.value,
-          ),
+         // using icon AND WIDGET BUILD MY CONTAINER
+        Center(
+          child: Stack(
+            alignment: Alignment.center,
+            children:[
+              buildMyContainer(listRadius[0]),
+              buildMyContainer(listRadius[1]),
+              buildMyContainer(listRadius[2]),
+              buildMyContainer(listRadius[3]),
+              buildMyContainer(listRadius[4]),
+              buildMyContainer(listRadius[5]),
+              Icon(Icons.add_call, color: Colors.white,size: 35)
+            ] 
         )
+        )
+
+
+
+
+    
+         //METHOD 1: USING ANIMATION CONTROLLER BUT W/O ICON
+        // Center(
+        //   child: Stack(
+        //     alignment: Alignment.center,
+        //     children: listRadius.map((radius) => Container(
+        //       width: radius * _animationController.value,
+        //       height: radius * _animationController.value,
+        //       decoration: BoxDecoration(
+        //         shape: BoxShape.circle,
+        //         color: Colors.blue.withAlpha(((1.0 - _animationController.value) *255).toInt()),
+        //       ),
+        //     ) ,).toList()
+        //   ),
+        // ),
+
+
+
+    
+        // alternative way- USING ANIMATION VALUE W/O ICON
+        // Center(
+        //   child: Stack(
+        //     alignment: Alignment.center,
+        //     children: listRadius.map((radius) => Container(
+        //       width: radius * _animation.value,
+        //       height: radius * _animation.value,
+        //       decoration: BoxDecoration(
+        //         shape: BoxShape.circle,
+        //         color: Colors.blue.withAlpha(((1.0 - _animation.value) *255).toInt()),
+        //       ),
+        //     ) ,).toList()
+        //   ),
+        // )
+      
             ); //end of Scaffold
   } //end of Widget build
+
+
+  Widget buildMyContainer(radius){
+    return Container(
+              width: radius * _animationController.value,
+              height: radius * _animationController.value,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.blue.withAlpha(((1.0 - _animationController.value) *255).toInt()),
+              ),
+            );
+  }
 } //end of _ContainerPageState
