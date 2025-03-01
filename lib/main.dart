@@ -60,72 +60,80 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   }
  
  var listRadius =[100.0,150.0,200.0,250.0,300.0,350.0];
-
+ 
   @override
   Widget build(BuildContext context) {
+    var arrColor = [Colors.yellow, Colors.purple, Colors.green, Colors.red, Colors.orange,Colors.pink, Colors.blue, Colors.green, Colors.red, Colors.orange ];
     return Scaffold(
         appBar: AppBar(
           title:
-              Text('Ripple Effect Animation'), 
+              Text('Gridview count and extent'), 
         ), //AppBar           
        //many circles
        //enlarging the circles
        //opacity of circles more at end
 
          body: 
+         
+         
+         Column(
+           children: [
+         
+         
+             Expanded(
+               child: GridView.count( //acc to count 
+                crossAxisCount:2 ,//ek row me kitne column rhenge,
+                mainAxisSpacing: 11, //rows ke beech spacing 
+                crossAxisSpacing: 11, // column ke beech spacing
+                 children: [// container dont require fixed size in case of gridview- self adjusting
+                 
+                  Container(  color: arrColor[0],),
+                    Container(  color: arrColor[1],),
+                      Container(  color: arrColor[2],),
+                        Container(  color: arrColor[3],),
+                          Container(  color: arrColor[4],),
+                            Container(  color: arrColor[5],),
+                              Container(  color: arrColor[6],),
+                                Container(  color: arrColor[7],),
+                                  Container(  color: arrColor[8],),
+                                    Container(  color: arrColor[9],),
+                                    
+                    
+               
+                 ]
+               ),
+             ),
+         
+         
+         
+         
+               
+            Expanded(
+              child: GridView.extent(
+                        maxCrossAxisExtent: 150 ,
+                        mainAxisSpacing: 11,
+                        crossAxisSpacing: 11,
+                        children: [
+                Container(  color: arrColor[0],),
+                    Container(  color: arrColor[1],),
+                      Container(  color: arrColor[2],),
+                        Container(  color: arrColor[3],),
+                          Container(  color: arrColor[4],),
+                            Container(  color: arrColor[5],),
+                              Container(  color: arrColor[6],),
+                                Container(  color: arrColor[7],),
+                                  Container(  color: arrColor[8],),
+                                    Container(  color: arrColor[9],),
+                        ],
+               
+                       ),
+            ),
+         
+         
+         
+           ],
+         )
 
-         // using icon AND WIDGET BUILD MY CONTAINER
-        Center(
-          child: Stack(
-            alignment: Alignment.center,
-            children:[
-              buildMyContainer(listRadius[0]),
-              buildMyContainer(listRadius[1]),
-              buildMyContainer(listRadius[2]),
-              buildMyContainer(listRadius[3]),
-              buildMyContainer(listRadius[4]),
-              buildMyContainer(listRadius[5]),
-              Icon(Icons.add_call, color: Colors.white,size: 35)
-            ] 
-        )
-        )
-
-
-
-
-    
-         //METHOD 1: USING ANIMATION CONTROLLER BUT W/O ICON
-        // Center(
-        //   child: Stack(
-        //     alignment: Alignment.center,
-        //     children: listRadius.map((radius) => Container(
-        //       width: radius * _animationController.value,
-        //       height: radius * _animationController.value,
-        //       decoration: BoxDecoration(
-        //         shape: BoxShape.circle,
-        //         color: Colors.blue.withAlpha(((1.0 - _animationController.value) *255).toInt()),
-        //       ),
-        //     ) ,).toList()
-        //   ),
-        // ),
-
-
-
-    
-        // alternative way- USING ANIMATION VALUE W/O ICON
-        // Center(
-        //   child: Stack(
-        //     alignment: Alignment.center,
-        //     children: listRadius.map((radius) => Container(
-        //       width: radius * _animation.value,
-        //       height: radius * _animation.value,
-        //       decoration: BoxDecoration(
-        //         shape: BoxShape.circle,
-        //         color: Colors.blue.withAlpha(((1.0 - _animation.value) *255).toInt()),
-        //       ),
-        //     ) ,).toList()
-        //   ),
-        // )
       
             ); //end of Scaffold
   } //end of Widget build
