@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
  
   @override
   Widget build(BuildContext context) {
-    var arrColor = [Colors.yellow, Colors.purple, Colors.green, Colors.red, Colors.orange,Colors.pink, Colors.blue, Colors.green, Colors.red, Colors.orange ];
+    var arrColor = [Colors.yellow, Colors.purple, Colors.green, Colors.red, Colors.orange,Colors.pink, Colors.blue, Colors.green, Colors.red, Colors.orange,Colors.yellow, Colors.purple, Colors.green, Colors.red, Colors.orange,Colors.pink, Colors.blue, Colors.green, Colors.red, Colors.orange ];
     return Scaffold(
         appBar: AppBar(
           title:
@@ -74,65 +74,97 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
        //opacity of circles more at end
 
          body: 
+         //FOR DYNAMIC DATA- GRIDVIEW.BUILDER IS USED 
+
+
+         GridView.builder(gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+         maxCrossAxisExtent: 100,
+          crossAxisSpacing: 11, // Space between columns
+          mainAxisSpacing: 11,  //space between rows
+          ),
+          itemBuilder: (context, index) {
+           return Container(color: arrColor[index],);
+         },itemCount: arrColor.length, 
+         )
+
+
+
+
+      
+        //  GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //   crossAxisCount: 4,
+        //   crossAxisSpacing: 11, // Space between columns
+        //   mainAxisSpacing: 11,  //space between rows
+        //   ),
+        //   itemBuilder: (context, index) {
+        //    return Container(color: arrColor[index],);
+        //  },itemCount: arrColor.length, 
+        //  )
+
+
+
+
+
+
+
+
+        //  Column(
+        //    children: [
          
          
-         Column(
-           children: [
-         
-         
-             Expanded(
-               child: GridView.count( //acc to count 
-                crossAxisCount:2 ,//ek row me kitne column rhenge,
-                mainAxisSpacing: 11, //rows ke beech spacing 
-                crossAxisSpacing: 11, // column ke beech spacing
-                 children: [// container dont require fixed size in case of gridview- self adjusting
+        //      Expanded(
+        //        child: GridView.count( //acc to count 
+        //         crossAxisCount:2 ,//ek row me kitne column rhenge,
+        //         mainAxisSpacing: 11, //rows ke beech spacing 
+        //         crossAxisSpacing: 11, // column ke beech spacing
+        //          children: [// container dont require fixed size in case of gridview- self adjusting
                  
-                  Container(  color: arrColor[0],),
-                    Container(  color: arrColor[1],),
-                      Container(  color: arrColor[2],),
-                        Container(  color: arrColor[3],),
-                          Container(  color: arrColor[4],),
-                            Container(  color: arrColor[5],),
-                              Container(  color: arrColor[6],),
-                                Container(  color: arrColor[7],),
-                                  Container(  color: arrColor[8],),
-                                    Container(  color: arrColor[9],),
+        //           Container(  color: arrColor[0],),
+        //             Container(  color: arrColor[1],),
+        //               Container(  color: arrColor[2],),
+        //                 Container(  color: arrColor[3],),
+        //                   Container(  color: arrColor[4],),
+        //                     Container(  color: arrColor[5],),
+        //                       Container(  color: arrColor[6],),
+        //                         Container(  color: arrColor[7],),
+        //                           Container(  color: arrColor[8],),
+        //                             Container(  color: arrColor[9],),
                                     
                     
                
-                 ]
-               ),
-             ),
+        //          ]
+        //        ),
+        //      ),
          
          
          
          
                
-            Expanded(
-              child: GridView.extent(
-                        maxCrossAxisExtent: 150 ,
-                        mainAxisSpacing: 11,
-                        crossAxisSpacing: 11,
-                        children: [
-                Container(  color: arrColor[0],),
-                    Container(  color: arrColor[1],),
-                      Container(  color: arrColor[2],),
-                        Container(  color: arrColor[3],),
-                          Container(  color: arrColor[4],),
-                            Container(  color: arrColor[5],),
-                              Container(  color: arrColor[6],),
-                                Container(  color: arrColor[7],),
-                                  Container(  color: arrColor[8],),
-                                    Container(  color: arrColor[9],),
-                        ],
+        //     Expanded(
+        //       child: GridView.extent(
+        //                 maxCrossAxisExtent: 150 ,
+        //                 mainAxisSpacing: 11,
+        //                 crossAxisSpacing: 11,
+        //                 children: [
+        //         Container(  color: arrColor[0],),
+        //             Container(  color: arrColor[1],),
+        //               Container(  color: arrColor[2],),
+        //                 Container(  color: arrColor[3],),
+        //                   Container(  color: arrColor[4],),
+        //                     Container(  color: arrColor[5],),
+        //                       Container(  color: arrColor[6],),
+        //                         Container(  color: arrColor[7],),
+        //                           Container(  color: arrColor[8],),
+        //                             Container(  color: arrColor[9],),
+        //                 ],
                
-                       ),
-            ),
+        //                ),
+        //     ),
          
          
          
-           ],
-         )
+        //    ],
+        //  )
 
       
             ); //end of Scaffold
