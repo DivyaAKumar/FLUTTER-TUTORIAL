@@ -8,6 +8,7 @@ import 'package:my_first_flutter_app/ui_helper/util.dart';
 import 'package:intl/intl.dart';
 import 'package:my_first_flutter_app/widgets/detailedPage.dart';
 import 'package:my_first_flutter_app/widgets/rounded_btn.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,142 +44,85 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
  
   //late Animation _animation; // _ to make class private
   late AnimationController _animationController;
+  var nameController =TextEditingController();
+  static const String KEYNAME ="name";
+  var nameValue = "No value Saved";
+
+
   @override
   void initState() {
-  
+    // TODO: implement initState
     super.initState();
-    _animationController = AnimationController(vsync: this,duration: Duration(seconds: 3) , lowerBound: 0.3 );
- // alternative way -// _animation = Tween(begin: 0.0,end: 1.0).animate(_animationController);
-   
-
-   _animationController.addListener(() {
-     setState(() {
-       
-     });
-   },);
-    _animationController.forward();
+    getValue();
   }
- 
- var listRadius =[100.0,150.0,200.0,250.0,300.0,350.0];
- 
   @override
   Widget build(BuildContext context) {
-    var arrColor = [Colors.yellow, Colors.purple, Colors.green, Colors.red, Colors.orange,Colors.pink, Colors.blue, Colors.green, Colors.red, Colors.orange,Colors.yellow, Colors.purple, Colors.green, Colors.red, Colors.orange,Colors.pink, Colors.blue, Colors.green, Colors.red, Colors.orange ];
+ 
     return Scaffold(
         appBar: AppBar(
           title:
-              Text('Gridview count and extent'), 
+              Text('Shared Preference'), //for storing locally persistent data(ex- skipping login screen each time user logs in)
         ), //AppBar           
-       //many circles
-       //enlarging the circles
-       //opacity of circles more at end
-
+       
          body: 
-         //FOR DYNAMIC DATA- GRIDVIEW.BUILDER IS USED 
+         Center(
+           child: Container(
+            width: 200,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  
+                  
+            decoration: InputDecoration(
+            label: Text("Name"),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.blue, width: 4),
+              borderRadius: BorderRadius.circular(12),
+            ),
+                   ),
+                  
+                ),
+                ElevatedButton(onPressed: () async { 
+                  //var name = nameController.text.toString();
+
+                  //since we dont know when will the data come hence we handle it asynchronously hence we use async and await 
 
 
-         GridView.builder(gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-         maxCrossAxisExtent: 100,
-          crossAxisSpacing: 11, // Space between columns
-          mainAxisSpacing: 11,  //space between rows
-          ),
-          itemBuilder: (context, index) {
-           return Container(color: arrColor[index],);
-         },itemCount: arrColor.length, 
+                  var prefs = await SharedPreferences.getInstance();
+
+                  //prefs.setString( "name", name );
+                  prefs.setString(KEYNAME, 
+                  nameController.text.toString());
+
+
+                  
+                }, child: Text("Save")),
+                SizedBox(height: 11,),
+                Text(nameValue)
+
+
+              ],
+            ),
+           ),
          )
-
-
-
-
-      
-        //  GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        //   crossAxisCount: 4,
-        //   crossAxisSpacing: 11, // Space between columns
-        //   mainAxisSpacing: 11,  //space between rows
-        //   ),
-        //   itemBuilder: (context, index) {
-        //    return Container(color: arrColor[index],);
-        //  },itemCount: arrColor.length, 
-        //  )
-
-
-
-
-
-
-
-
-        //  Column(
-        //    children: [
-         
-         
-        //      Expanded(
-        //        child: GridView.count( //acc to count 
-        //         crossAxisCount:2 ,//ek row me kitne column rhenge,
-        //         mainAxisSpacing: 11, //rows ke beech spacing 
-        //         crossAxisSpacing: 11, // column ke beech spacing
-        //          children: [// container dont require fixed size in case of gridview- self adjusting
-                 
-        //           Container(  color: arrColor[0],),
-        //             Container(  color: arrColor[1],),
-        //               Container(  color: arrColor[2],),
-        //                 Container(  color: arrColor[3],),
-        //                   Container(  color: arrColor[4],),
-        //                     Container(  color: arrColor[5],),
-        //                       Container(  color: arrColor[6],),
-        //                         Container(  color: arrColor[7],),
-        //                           Container(  color: arrColor[8],),
-        //                             Container(  color: arrColor[9],),
-                                    
-                    
-               
-        //          ]
-        //        ),
-        //      ),
-         
-         
-         
-         
-               
-        //     Expanded(
-        //       child: GridView.extent(
-        //                 maxCrossAxisExtent: 150 ,
-        //                 mainAxisSpacing: 11,
-        //                 crossAxisSpacing: 11,
-        //                 children: [
-        //         Container(  color: arrColor[0],),
-        //             Container(  color: arrColor[1],),
-        //               Container(  color: arrColor[2],),
-        //                 Container(  color: arrColor[3],),
-        //                   Container(  color: arrColor[4],),
-        //                     Container(  color: arrColor[5],),
-        //                       Container(  color: arrColor[6],),
-        //                         Container(  color: arrColor[7],),
-        //                           Container(  color: arrColor[8],),
-        //                             Container(  color: arrColor[9],),
-        //                 ],
-               
-        //                ),
-        //     ),
-         
-         
-         
-        //    ],
-        //  )
-
       
             ); //end of Scaffold
+  }
+  //init state can never be handled asynchronously hence we create get value()
+  void getValue() async {
+    var prefs= await SharedPreferences.getInstance();
+
+    var getName = prefs.getString(KEYNAME);
+
+    
+    setState(() {
+      nameValue =  getName  ?? "No value Saved"; 
+
+    });
   } //end of Widget build
 
-
-  Widget buildMyContainer(radius){
-    return Container(
-              width: radius * _animationController.value,
-              height: radius * _animationController.value,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.blue.withAlpha(((1.0 - _animationController.value) *255).toInt()),
-              ),
-            );
-  }
 } //end of _ContainerPageState
