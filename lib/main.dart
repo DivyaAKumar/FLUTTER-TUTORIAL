@@ -61,9 +61,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     return Scaffold(
         appBar: AppBar(
           title:
-              Text('Shared Preference'), //for storing locally persistent data(ex- skipping login screen each time user logs in)
+              Text('Shared Preference to skip login screen'), //for storing locally persistent data(ex- skipping login screen each time user logs in)
         ), //AppBar           
-       
+
          body: 
          Center(
            child: Container(
