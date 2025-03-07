@@ -42,87 +42,33 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
  
-  //late Animation _animation; // _ to make class private
-  late AnimationController _animationController;
-  var nameController =TextEditingController();
-  static const String KEYNAME ="name";
-  var nameValue = "No value Saved";
+
+ 
 
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    getValue();
-  }
+ 
   @override
   Widget build(BuildContext context) {
- 
+  var imageArr = ["assets/images/ANILKUMAR.jpg", "assets/images/BIJIKUMAR.jpg", "assets/images/bird.png","assets/images/flutter.png",
+  "assets/images/happybird.png","assets/images/profile1.jpg","assets/images/ANILKUMAR.jpg", "assets/images/BIJIKUMAR.jpg", "assets/images/bird.png","assets/images/flutter.png",
+  "assets/images/happybird.png","assets/images/profile1.jpg"];
     return Scaffold(
         appBar: AppBar(
           title:
-              Text('Shared Preference'), //for storing locally persistent data(ex- skipping login screen each time user logs in)
+              Center(child: Text("Flutter Gallery")), 
         ), //AppBar           
 
-         body: 
-         Center(
-           child: Container(
-            width: 200,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextField(
-                  
-                  
-            decoration: InputDecoration(
-            label: Text("Name"),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue, width: 4),
-              borderRadius: BorderRadius.circular(12),
-            ),
-                   ),
-                  
-                ),
-                ElevatedButton(onPressed: () async { 
-                  //var name = nameController.text.toString();
-
-                  //since we dont know when will the data come hence we handle it asynchronously hence we use async and await 
-
-
-                  var prefs = await SharedPreferences.getInstance();
-
-                  //prefs.setString( "name", name );
-                  prefs.setString(KEYNAME, 
-                  nameController.text.toString());
-
-
-                  
-                }, child: Text("Save")),
-                SizedBox(height: 11,),
-                Text(nameValue)
-
-
-              ],
-            ),
-           ),
-         )
+         body: GridView.builder(gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200,
+          crossAxisSpacing: 11,
+          mainAxisSpacing: 11,
+         ), itemBuilder: (context, index) {
+           return Image.asset(imageArr[index]);
+         },itemCount: imageArr.length,)
+      
       
             ); //end of Scaffold
   }
-  //init state can never be handled asynchronously hence we create get value()
-  void getValue() async {
-    var prefs= await SharedPreferences.getInstance();
-
-    var getName = prefs.getString(KEYNAME);
-
-    
-    setState(() {
-      nameValue =  getName  ?? "No value Saved"; 
-
-    });
-  } //end of Widget build
 
 } //end of _ContainerPageState
