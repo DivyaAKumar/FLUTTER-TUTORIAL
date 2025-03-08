@@ -56,18 +56,37 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     return Scaffold(
         appBar: AppBar(
           title:
-              Center(child: Text("Flutter Gallery")), 
+              Center(child: Text("Flutter State Management")), 
         ), //AppBar           
 
-         body: GridView.builder(gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 200,
-          crossAxisSpacing: 11,
-          mainAxisSpacing: 11,
-         ), itemBuilder: (context, index) {
-           return Image.asset(imageArr[index]);
-         },itemCount: imageArr.length,)
-      
-      
+         body: Container(
+          width: double.infinity,
+          //child: Text("data---if needed by most or some widgets - then global state needed(app state),data---if needed by single state then local/emphemeral state needed, when we use app state we extract data and store it separately in parent widget (data-ui seperation),data-ui is seoerated for building proper architechture,app architechture- MVP,MVC, MVVM(Model,View,View Model), there is a need for proper architechture,hence global state maintained "),
+          child: Text("State Management Guidelines-\nGlobal State (App State): Use when data is needed by most or multiple widgets,\n Local/Ephemeral State: Use when data is required only by a single widget.\nApp State Usage: Extract data and store it separately in the parent widget (Data-UI separation).\n,Data-UI Separation: Essential for building a proper architecture.\n,App Architectures: MVP, MVC, MVVM (Model-View-ViewModel).\n,Need for Proper Architecture: Ensures maintainability and scalability, hence global state is maintained."),
+         )
+         //data---if needed by most or some widgets - then global state needed(app state)
+         //data---if needed by single state then local/emphemeral state needed
+         //when we use app state we extract data and store it separately in parent widget (data-ui seperation)
+         //data-ui is seoerated for building proper architechture
+         //app architechture- MVP,MVC, MVVM(Model,View,View Model)
+         //there is a need for proper architechture,hence global state maintained 
+
+         //local/emphemeral state- 
+         //stateful widget-for ui changes locally(puuri ui rebuild)
+         //stateful builer- only a component to be rebuild
+
+         //global state management-
+         //provider package - v. v. imp
+         //Cubit/Bloc-bloc for more complex structure 
+         //bloc - imp in future
+         //riverpod
+         //redux
+         //getx-easy (imp in past)
+
+
+
+
+
             ); //end of Scaffold
   }
 
